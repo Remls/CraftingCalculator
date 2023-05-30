@@ -72,6 +72,11 @@ document.addEventListener('alpine:init', () => {
                     one: 0,
                 }
                 this.updateCalculations()
+            },
+            fullReset() {
+                localStorage.clear()
+                this.reset('have')
+                this.reset('need')
             }
         }
     })
