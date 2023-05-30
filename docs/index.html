@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Crafting Calculator
+    </title>
+    <meta content="Crafting Calculator" property="og:title" />
+    <meta content="Crafting calculator for Genshin Impact" property="og:description" />
+    <meta content="website" property="og:type" />
+    <meta content="https://static.wikia.nocookie.net/gensin-impact/images/6/69/Splashscreen_Windblume%27s_Breath.png"
+        property="og:image" />
+    <meta content="https://remls.github.io/CraftingCalculator" property="og:url" />
+    <meta content="https://static.wikia.nocookie.net/gensin-impact/images/6/69/Splashscreen_Windblume%27s_Breath.png"
+        name="twitter:card" />
+    <link href="assets/styles.css" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <script src="assets/scripts.js"></script>
+    </meta>
+</head>
+
+<body x-data="craftData" x-init="updateCalculations">
+    <table>
+        <tr>
+            <th></th>
+            <th>Have</th>
+            <th>Need</th>
+        </tr>
+        <tr>
+            <th>★★★★★</th>
+            <td>
+                <input tabindex="1" type="number" value="0" @change="updateCalculations" x-model="have.five"
+                    :class="{ 'zero': !have.five }" />
+            </td>
+            <td>
+                <input tabindex="11" type="number" value="0" @change="updateCalculations" x-model="need.five"
+                    :class="{ 'zero': !need.five }" />
+            </td>
+        </tr>
+        <tr>
+            <th>★★★★</th>
+            <td>
+                <input tabindex="2" type="number" value="0" @change="updateCalculations" x-model="have.four"
+                    :class="{ 'zero': !have.four }" />
+            </td>
+            <td>
+                <input tabindex="12" type="number" value="0" @change="updateCalculations" x-model="need.four"
+                    :class="{ 'zero': !need.four }" />
+            </td>
+        </tr>
+        <tr>
+            <th>★★★</th>
+            <td>
+                <input tabindex="3" type="number" value="0" @change="updateCalculations" x-model="have.three"
+                    :class="{ 'zero': !have.three }" />
+            </td>
+            <td>
+                <input tabindex="13" type="number" value="0" @change="updateCalculations" x-model="need.three"
+                    :class="{ 'zero': !need.three }" />
+            </td>
+        </tr>
+        <tr>
+            <th>★★</th>
+            <td>
+                <input tabindex="4" type="number" value="0" @change="updateCalculations" x-model="have.two"
+                    :class="{ 'zero': !have.two }" />
+            </td>
+            <td>
+                <input tabindex="14" type="number" value="0" @change="updateCalculations" x-model="need.two"
+                    :class="{ 'zero': !need.two }" />
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <div class="reset-button-container">
+                    <button tabindex="5" class="reset-button" @click="reset('have')">Reset</button>
+                </div>
+            </td>
+            <td>
+                <div class="reset-button-container">
+                    <button tabindex="15" class="reset-button" @click="reset('need')">Reset</button>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Progress</th>
+            <td colspan="2">
+                <progress value="0" max="100" x-model="percent"></progress>
+                <br />
+                <span x-text="haveSimplified"></span> / <span x-text="needSimplified"></span>
+                <br />
+                <span x-text="percentText"></span>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

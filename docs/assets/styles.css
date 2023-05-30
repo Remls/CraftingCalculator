@@ -1,0 +1,76 @@
+@media screen and (min-width: 1024px) {
+  body {
+    padding: 2rem 5rem;
+  }
+}
+@media screen and (max-width: 1023px) {
+  body {
+    padding: 2rem;
+  }
+  table {
+    max-width: 100%;
+  }
+}
+
+:root {
+  --bg-color: #f0f0f0;
+  --secondary-color: #30363d;
+  --txt-color: #0d1117;
+  --txt-secondary-color: gray;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid var(--txt-secondary-color);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+td,
+th {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid var(--txt-secondary-color);
+}
+
+input[type="number"] {
+  width: 2rem;
+}
+
+input[type="number"].zero {
+  color: var(--txt-secondary-color);
+}
+
+.reset-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset-button {
+  cursor: pointer;
+  outline: 0;
+  color: #fff;
+  background-color: #c20707;
+  border-color: #c20707;
+  display: inline-block;
+  line-height: 1.5;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.reset-button:hover {
+  color: #fff;
+  background-color: #c20707;
+  border-color: #870606;
+}
