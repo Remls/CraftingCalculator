@@ -16,9 +16,12 @@ document.addEventListener('alpine:init', () => {
             haveSimplified: 0,
             needSimplified: 0,
             percent: 0,
-            percentText: '0%',
+            percentText: '0.00%',
 
-            updateCalculations() {
+            updateCalculations($e) {
+                if ($e && $e.target.value == '') {
+                    $e.target.value = 0
+                }
                 this.haveSimplified = this.simplify(this.have)
                 this.needSimplified = this.simplify(this.need)
                 if (this.needSimplified == 0) {
@@ -40,9 +43,17 @@ document.addEventListener('alpine:init', () => {
             },
             validate(inp) {
                 for (let key in inp) {
-                    if (inp[key] < 0) {
+                    if (!inp[key]) {
                         inp[key] = 0
                     }
+                    if (inp[key] <= 0) {
+                        inp[key] = 0
+                    }
+                }
+            },
+            clearValueIfZero($e) {
+                if ($e.target.value == 0) {
+                    $e.target.value = ''
                 }
             },
             reset(type) {
