@@ -6,12 +6,14 @@ document.addEventListener('alpine:init', () => {
                 four: 0,
                 three: 0,
                 two: 0,
+                one: 0,
             }),
             need: this.$persist({
                 five: 0,
                 four: 0,
                 three: 0,
                 two: 0,
+                one: 0,
             }),
             haveSimplified: 0,
             needSimplified: 0,
@@ -39,7 +41,8 @@ document.addEventListener('alpine:init', () => {
                 let four = inp.four ?? 0
                 let three = inp.three ?? 0
                 let two = inp.two ?? 0
-                return (five * 27) + (four * 9) + (three * 3) + (two * 1)
+                let one = inp.one ?? 0
+                return (five * 81) + (four * 27) + (three * 9) + (two * 3) + (one * 1)
             },
             validate(inp) {
                 for (let key in inp) {
@@ -56,12 +59,17 @@ document.addEventListener('alpine:init', () => {
                     $e.target.value = ''
                 }
             },
+            loadPreset(five, four, three, two, one) {
+                this.need = { five, four, three, two, one }
+                this.updateCalculations()
+            },
             reset(type) {
                 this[type] = {
                     five: 0,
                     four: 0,
                     three: 0,
                     two: 0,
+                    one: 0,
                 }
                 this.updateCalculations()
             }

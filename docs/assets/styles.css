@@ -10,6 +10,9 @@
   table {
     max-width: 100%;
   }
+  section {
+    max-width: 100%;
+  }
 }
 
 :root {
@@ -28,6 +31,12 @@ body {
 table {
   border-collapse: collapse;
   border: 1px solid var(--txt-secondary-color);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -54,23 +63,49 @@ input[type="number"].zero {
   align-items: center;
 }
 
-.reset-button {
+button {
   cursor: pointer;
   outline: 0;
-  color: #fff;
-  background-color: #c20707;
-  border-color: #c20707;
-  display: inline-block;
+  display: inline-flex;
   line-height: 1.5;
   text-align: center;
+  align-items: center;
+  gap: 0.5rem;
   border: 1px solid transparent;
   padding: 6px 12px;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.reset-button {
+  color: #fff;
+  background-color: #c20707;
+  border-color: #c20707;
+}
 .reset-button:hover {
   color: #fff;
   background-color: #c20707;
   border-color: #870606;
+}
+
+.preset-button {
+  color: #000;
+  background-color: #dcf2b9;
+  border-color: #dcf2b9;
+}
+.preset-button > div.images > img {
+  width: 20px;
+  height: 20px;
+}
+.preset-button:hover {
+  color: #000;
+  background-color: #dcf2b9;
+  border-color: #7b9158;
+}
+
+.preset-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
