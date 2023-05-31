@@ -20,6 +20,10 @@
   --secondary-color: #30363d;
   --txt-color: #0d1117;
   --txt-secondary-color: gray;
+  --progress-bar-color: #287ee1;
+  --full-progress-bar-color: green;
+  --reset-button-color: #c20707;
+  --preset-button-color: #dcf2b9;
 }
 
 body {
@@ -57,10 +61,11 @@ input[type="number"].zero {
   color: var(--txt-secondary-color);
 }
 
-.reset-button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+progress {
+  accent-color: var(--progress-bar-color);
+}
+progress.full {
+  accent-color: var(--full-progress-bar-color);
 }
 
 button {
@@ -77,35 +82,32 @@ button {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+button:hover {
+  filter: brightness(0.9);
+}
 
+.reset-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .reset-button {
-  color: #fff;
-  background-color: #c20707;
-  border-color: #c20707;
-}
-.reset-button:hover {
-  color: #fff;
-  background-color: #c20707;
-  border-color: #870606;
-}
-
-.preset-button {
-  color: #000;
-  background-color: #dcf2b9;
-  border-color: #dcf2b9;
-}
-.preset-button > div.images > img {
-  width: 20px;
-  height: 20px;
-}
-.preset-button:hover {
-  color: #000;
-  background-color: #dcf2b9;
-  border-color: #7b9158;
+  color: white;
+  background-color: var(--reset-button-color);
+  border-color: var(--reset-button-color);
 }
 
 .preset-button-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+.preset-button {
+  color: black;
+  background-color: var(--preset-button-color);
+  border-color: var(--preset-button-color);
+}
+.preset-button > div.images > img {
+  width: 20px;
+  height: 20px;
 }
