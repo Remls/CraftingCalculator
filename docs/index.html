@@ -32,55 +32,55 @@
         <tr>
             <th>★★★★★</th>
             <td>
-                <input tabindex="1" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="1" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="have.five" :class="{ 'zero': !have.five }" />
             </td>
             <td>
-                <input tabindex="11" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="11" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="need.five" :class="{ 'zero': !need.five }" />
             </td>
         </tr>
         <tr>
             <th>★★★★</th>
             <td>
-                <input tabindex="2" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="2" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="have.four" :class="{ 'zero': !have.four }" />
             </td>
             <td>
-                <input tabindex="12" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="12" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="need.four" :class="{ 'zero': !need.four }" />
             </td>
         </tr>
         <tr>
             <th>★★★</th>
             <td>
-                <input tabindex="3" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="3" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="have.three" :class="{ 'zero': !have.three }" />
             </td>
             <td>
-                <input tabindex="13" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="13" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="need.three" :class="{ 'zero': !need.three }" />
             </td>
         </tr>
         <tr>
             <th>★★</th>
             <td>
-                <input tabindex="4" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="4" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="have.two" :class="{ 'zero': !have.two }" />
             </td>
             <td>
-                <input tabindex="14" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="14" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="need.two" :class="{ 'zero': !need.two }" />
             </td>
         </tr>
         <tr>
             <th>★</th>
             <td>
-                <input tabindex="5" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="5" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="have.one" :class="{ 'zero': !have.one }" />
             </td>
             <td>
-                <input tabindex="15" type="number" value="0" @focus="clearValueIfZero" @blur="updateCalculations"
+                <input tabindex="15" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
                     x-model="need.one" :class="{ 'zero': !need.one }" />
             </td>
         </tr>
