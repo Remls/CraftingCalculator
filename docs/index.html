@@ -104,6 +104,11 @@
                 <progress value="0" max="100" x-model="percent"></progress>
                 <br />
                 <span x-text="haveSimplified"></span> / <span x-text="needSimplified"></span>
+                <template x-if="diffSimplified > 0">
+                    <span>
+                        (<span x-text="diffSimplified"></span> remaining)
+                    </span>
+                </template>
                 <br />
                 <span x-text="percentText"></span>
             </td>

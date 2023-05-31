@@ -17,6 +17,7 @@ document.addEventListener('alpine:init', () => {
             }),
             haveSimplified: 0,
             needSimplified: 0,
+            diffSimplified: 0,
             percent: 0,
             percentText: '0.00%',
 
@@ -27,10 +28,15 @@ document.addEventListener('alpine:init', () => {
                 this.haveSimplified = this.simplify(this.have)
                 this.needSimplified = this.simplify(this.need)
                 if (this.needSimplified == 0) {
+                    this.diffSimplified = 0
                     this.percent = 0
                     this.percentText = '0.00%'
                     return
                 } else {
+                    this.diffSimplified = this.needSimplified - this.haveSimplified
+                    if (this.diffSimplified < 0) {
+                        this.diffSimplified = 0
+                    }
                     this.percent = (this.haveSimplified / this.needSimplified) * 100
                     this.percentText = this.percent.toFixed(2) + '%'
                 }
