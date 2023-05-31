@@ -33,55 +33,55 @@
             <th>★★★★★</th>
             <td>
                 <input tabindex="1" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="have.five" :class="{ 'zero': !have.five }" />
+                    :disabled="isDisabled.five" x-model="have.five" :class="{ 'zero': !have.five }" />
             </td>
             <td>
                 <input tabindex="11" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="need.five" :class="{ 'zero': !need.five }" />
+                    :disabled="isDisabled.five" x-model="need.five" :class="{ 'zero': !need.five }" />
             </td>
         </tr>
         <tr>
             <th>★★★★</th>
             <td>
                 <input tabindex="2" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="have.four" :class="{ 'zero': !have.four }" />
+                    :disabled="isDisabled.four" x-model="have.four" :class="{ 'zero': !have.four }" />
             </td>
             <td>
                 <input tabindex="12" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="need.four" :class="{ 'zero': !need.four }" />
+                    :disabled="isDisabled.four" x-model="need.four" :class="{ 'zero': !need.four }" />
             </td>
         </tr>
         <tr>
             <th>★★★</th>
             <td>
                 <input tabindex="3" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="have.three" :class="{ 'zero': !have.three }" />
+                    :disabled="isDisabled.three" x-model="have.three" :class="{ 'zero': !have.three }" />
             </td>
             <td>
                 <input tabindex="13" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="need.three" :class="{ 'zero': !need.three }" />
+                    :disabled="isDisabled.three" x-model="need.three" :class="{ 'zero': !need.three }" />
             </td>
         </tr>
         <tr>
             <th>★★</th>
             <td>
                 <input tabindex="4" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="have.two" :class="{ 'zero': !have.two }" />
+                    :disabled="isDisabled.two" x-model="have.two" :class="{ 'zero': !have.two }" />
             </td>
             <td>
                 <input tabindex="14" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="need.two" :class="{ 'zero': !need.two }" />
+                    :disabled="isDisabled.two" x-model="need.two" :class="{ 'zero': !need.two }" />
             </td>
         </tr>
         <tr>
             <th>★</th>
             <td>
                 <input tabindex="5" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="have.one" :class="{ 'zero': !have.one }" />
+                    :disabled="isDisabled.one" x-model="have.one" :class="{ 'zero': !have.one }" />
             </td>
             <td>
                 <input tabindex="15" type="number" value="0" @focus="clearValueIfZero" @change="updateCalculations"
-                    x-model="need.one" :class="{ 'zero': !need.one }" />
+                    :disabled="isDisabled.one" x-model="need.one" :class="{ 'zero': !need.one }" />
             </td>
         </tr>
         <tr>
@@ -121,6 +121,11 @@
 
     <section>
         <h2>Presets</h2>
+
+        <p>
+            If a preset is selected, the simplified value will be calculated based only on the available
+            rarities of your selected preset (with the lowest rarity taking a value of 1, then 3, then 9, etc.).
+        </p>
 
         <h3>Character ascension</h3>
         <div class="button-group">
@@ -283,7 +288,8 @@
         <h2>Other calculators</h2>
 
         <div class="button-group row">
-            <button class="link-button" @click="window.location.href='https://act.hoyolab.com/ys/event/calculator-sea/index.html'">
+            <button class="link-button"
+                @click="window.location.href='https://act.hoyolab.com/ys/event/calculator-sea/index.html'">
                 <div class="images">
                     <img src="assets/images/hoyolab.png">
                 </div>
@@ -305,7 +311,8 @@
     </div>
     <div class="icons">
         <a href="https://t.me/Remls">
-            <svg fill="none" height="25" stroke="#0d1117" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="25">
+            <svg fill="none" height="25" stroke="#0d1117" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="1.5" viewbox="0 0 24 24" width="25">
                 <path d="M0 0h24v24H0z" fill="none" stroke="none">
                 </path>
                 <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4">
@@ -313,10 +320,12 @@
             </svg>
         </a>
         <a href="https://github.com/Remls/CraftingCalculator">
-            <svg fill="none" height="25" stroke="#0d1117" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="25">
+            <svg fill="none" height="25" stroke="#0d1117" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="1.5" viewbox="0 0 24 24" width="25">
                 <path d="M0 0h24v24H0z" fill="none" stroke="none">
                 </path>
-                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
+                <path
+                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
                 </path>
             </svg>
         </a>

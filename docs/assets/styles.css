@@ -49,6 +49,7 @@ section {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  padding: 1rem 0;
 }
 
 td,
@@ -64,6 +65,10 @@ input[type="number"] {
 
 input[type="number"].zero {
   color: var(--txt-secondary-color);
+}
+input[type="number"]:disabled {
+  color: var(--txt-secondary-color);
+  cursor: not-allowed;
 }
 
 progress {
