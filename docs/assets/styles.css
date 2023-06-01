@@ -168,9 +168,12 @@ button:focus {
   flex-grow: 1;
   text-align: end;
 }
+.preset-button > div.images {
+  display: flex;
+}
 .preset-button > div.images > img {
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
 }
 
 .link-button {
