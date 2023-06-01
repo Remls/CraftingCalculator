@@ -120,15 +120,25 @@
         </tr>
     </table>
 
-    <section>
+    <section class="presets-section">
         <h2>Presets</h2>
 
-        <p>
-            If a preset is selected, the simplified value will be calculated based only on the available
-            rarities of your selected preset (with the lowest rarity taking a value of 1, then 3, then 9, etc.).
-        </p>
+        <div class="explanation">
+            <p>
+                Use the sliders to select From and To, then click one of the buttons to apply the preset.
+            </p>
+            <p>
+                If a preset is selected, the simplified value (next to the progress bar) will be calculated based
+                only on the available rarities of your selected preset (with the lowest rarity taking a value of 1,
+                then 3, then 9, etc.). Also, input boxes for rarities that are impossible to obtain for the selected
+                preset will be disabled.
+            </p>
+            <p>
+                To clear the preset and re-enable all inputs, click the "Full Reset" button.
+            </p>
+        </div>
 
-        <h3>Character ascension</h3>
+        <h4>Character ascension</h4>
 
         <div class="range-group" :class="{ 'error': presetOptions.characterAscension.error }">
             <input type="range" :min="presets.characterAscension.min" :max="presets.characterAscension.max"
@@ -157,10 +167,8 @@
                     <img src="assets/images/gemstone-2.png">
                     <img src="assets/images/none.png">
                 </div>
-                <div>
-                    Gemstones
-                    (<span x-text="craftableToStr(presetOptions.characterAscension.drops.gemstones)"></span>)
-                </div>
+                Gemstones
+                <div class="preview" x-text="craftableToStr(presetOptions.characterAscension.drops.gemstones)"></div>
             </button>
             <button class="preset-button" @click="loadPresetFromSelection('characterAscension', 'mobDrops')">
                 <div class="images">
@@ -170,16 +178,33 @@
                     <img src="assets/images/mob-drop-2.png">
                     <img src="assets/images/mob-drop-1.png">
                 </div>
-                <div>
-                    Mob drops
-                    (<span x-text="craftableToStr(presetOptions.characterAscension.drops.mobDrops)"></span>)
-                </div>
+                Mob drops
+                <div class="preview" x-text="craftableToStr(presetOptions.characterAscension.drops.mobDrops)"></div>
             </button>
         </div>
 
-        <h3>Talents</h3>
+        <h4>Talents</h4>
+
+        <div class="range-group" :class="{ 'error': presetOptions.talents.error }">
+            <input type="range" :min="presets.talents.min" :max="presets.talents.max" @change="updatePreset('talents')"
+                x-model="presetOptions.talents.from">
+            <div>
+                Lv. <span x-text="presetOptions.talents.from"></span>
+                to
+                Lv. <span x-text="presetOptions.talents.to"></span>
+                <template x-if="presetOptions.talents.error">
+                    <span style="color: red;">
+                        <br />
+                        Invalid selection
+                    </span>
+                </template>
+            </div>
+            <input type="range" :min="presets.talents.min" :max="presets.talents.max" @change="updatePreset('talents')"
+                x-model="presetOptions.talents.to">
+        </div>
+
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(null, 38, 21, 3, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('talents', 'talentBooks')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/talent-book-4.png">
@@ -188,8 +213,9 @@
                     <img src="assets/images/none.png">
                 </div>
                 Talent books (1 talent)
+                <div class="preview" x-text="craftableToStr(presetOptions.talents.drops.talentBooks)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, null, 31, 22, 6)">
+            <button class="preset-button" @click="loadPresetFromSelection('talents', 'mobDrops')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -198,8 +224,9 @@
                     <img src="assets/images/mob-drop-1.png">
                 </div>
                 Mob drops (1 talent)
+                <div class="preview" x-text="craftableToStr(presetOptions.talents.drops.mobDrops)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, 76, 42, 6, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('talents', 'talentBooksX2')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/talent-book-4.png">
@@ -208,8 +235,9 @@
                     <img src="assets/images/none.png">
                 </div>
                 Talent books (2 talents)
+                <div class="preview" x-text="craftableToStr(presetOptions.talents.drops.talentBooksX2)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, null, 62, 44, 12)">
+            <button class="preset-button" @click="loadPresetFromSelection('talents', 'mobDropsX2')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -218,8 +246,9 @@
                     <img src="assets/images/mob-drop-1.png">
                 </div>
                 Mob drops (2 talents)
+                <div class="preview" x-text="craftableToStr(presetOptions.talents.drops.mobDropsX2)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, 114, 63, 9, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('talents', 'talentBooksX3')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/talent-book-4.png">
@@ -228,8 +257,9 @@
                     <img src="assets/images/none.png">
                 </div>
                 Talent books (3 talents)
+                <div class="preview" x-text="craftableToStr(presetOptions.talents.drops.talentBooksX3)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, null, 93, 66, 18)">
+            <button class="preset-button" @click="loadPresetFromSelection('talents', 'mobDropsX3')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -238,10 +268,11 @@
                     <img src="assets/images/mob-drop-1.png">
                 </div>
                 Mob drops (3 talents)
+                <div class="preview" x-text="craftableToStr(presetOptions.talents.drops.mobDropsX3)"></div>
             </button>
         </div>
 
-        <h3>5★ weapon ascension</h3>
+        <h4>5★ weapon ascension</h4>
         <div class="button-group">
             <button class="preset-button" @click="loadPreset(6, 14, 14, 5, null)">
                 <div class="images">
@@ -275,7 +306,7 @@
             </button>
         </div>
 
-        <h3>4★ weapon ascension</h3>
+        <h4>4★ weapon ascension</h4>
         <div class="button-group">
             <button class="preset-button" @click="loadPreset(4, 9, 9, 3, null)">
                 <div class="images">
@@ -333,7 +364,7 @@
 
 <footer>
     <div>
-        Calculations do not take crafting bonuses into account.
+        Bear in mind that these calculations cannot take crafting bonuses into account.
     </div>
     <div class="icons">
         <a href="https://t.me/Remls">

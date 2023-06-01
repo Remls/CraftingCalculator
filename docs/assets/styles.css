@@ -79,6 +79,14 @@ progress.full {
   accent-color: var(--full-progress-bar-color);
 }
 
+.presets-section .explanation > p {
+  text-align: justify;
+}
+.presets-section > h4::before {
+  content: "\2022";
+  margin-right: 0.5rem;
+}
+
 button {
   cursor: pointer;
   outline: 0;
@@ -104,7 +112,7 @@ button:hover, button:focus {
   flex-direction: row;
   gap: 0.5rem;
   padding: 1rem;
-  border: 1px solid var(--txt-secondary-color);
+  border: 1px solid transparent;
   border-radius: 0.25rem;
   margin: 0.5rem 0;
 }
@@ -112,7 +120,7 @@ button:hover, button:focus {
   animation: blink 1s;
   animation-iteration-count: 3;
 }
-@keyframes blink { 50% { border-color: red; border-width: 2px; } }
+@keyframes blink { 50% { border-color: red; } }
 .range-group > input[type="range"] {
   width: 4rem;
   flex-grow: 2;
@@ -150,6 +158,10 @@ button:hover, button:focus {
   color: var(--txt-color);
   background-color: var(--preset-button-color);
   border-color: var(--preset-button-color);
+}
+.preset-button > div.preview {
+  flex-grow: 1;
+  text-align: end;
 }
 .preset-button > div.images > img {
   width: 20px;
