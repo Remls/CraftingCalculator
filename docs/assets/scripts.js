@@ -131,11 +131,11 @@ document.addEventListener('alpine:init', () => {
                 for (let drop in this.presets[type].drops) {
                     const preset = { five: 0, four: 0, three: 0, two: 0, one: 0 }
                     for (let i = from; i < to; i++) {
-                        preset.five += this.presets[type].drops[drop][i].five
-                        preset.four += this.presets[type].drops[drop][i].four
-                        preset.three += this.presets[type].drops[drop][i].three
-                        preset.two += this.presets[type].drops[drop][i].two
-                        preset.one += this.presets[type].drops[drop][i].one
+                        KEYS.forEach(key => {
+                            if (key in this.presets[type].drops[drop][i]) {
+                                preset[key] += this.presets[type].drops[drop][i][key]
+                            }
+                        })
                     }
                     this.presets[type].disabledKeys[drop].forEach(key => {
                         preset[key] = null
