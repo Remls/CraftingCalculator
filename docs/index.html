@@ -18,11 +18,12 @@
     <link href="assets/styles.css" rel="stylesheet" />
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.10.5/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <script src="assets/presets.js"></script>
     <script src="assets/scripts.js"></script>
     </meta>
 </head>
 
-<body x-data="craftData" x-init="updateCalculations">
+<body x-data="craftData">
     <table>
         <tr>
             <th></th>
@@ -128,8 +129,27 @@
         </p>
 
         <h3>Character ascension</h3>
+
+        <div class="range-group" :class="{ 'error': presetOptions.characterAscension.error }">
+            <input type="range" :min="presets.characterAscension.min" :max="presets.characterAscension.max"
+                @change="updatePreset('characterAscension')" x-model="presetOptions.characterAscension.from">
+            <div>
+                <span x-text="presetOptions.characterAscension.from"></span> ✦
+                to
+                <span x-text="presetOptions.characterAscension.to"></span> ✦
+                <template x-if="presetOptions.characterAscension.error">
+                    <span style="color: red;">
+                        <br />
+                        Invalid selection
+                    </span>
+                </template>
+            </div>
+            <input type="range" :min="presets.characterAscension.min" :max="presets.characterAscension.max"
+                @change="updatePreset('characterAscension')" x-model="presetOptions.characterAscension.to">
+        </div>
+
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(6, 9, 9, 1, 0)">
+            <button class="preset-button" @click="loadPresetFromSelection('characterAscension', 'gemstones')">
                 <div class="images">
                     <img src="assets/images/gemstone-5.png">
                     <img src="assets/images/gemstone-4.png">
@@ -137,9 +157,12 @@
                     <img src="assets/images/gemstone-2.png">
                     <img src="assets/images/none.png">
                 </div>
-                Gemstones
+                <div>
+                    Gemstones
+                    (<span x-text="craftableToStr(presetOptions.characterAscension.drops.gemstones)"></span>)
+                </div>
             </button>
-            <button class="preset-button" @click="loadPreset(0, 0, 36, 30, 18)">
+            <button class="preset-button" @click="loadPresetFromSelection('characterAscension', 'mobDrops')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -147,13 +170,16 @@
                     <img src="assets/images/mob-drop-2.png">
                     <img src="assets/images/mob-drop-1.png">
                 </div>
-                Mob drops
+                <div>
+                    Mob drops
+                    (<span x-text="craftableToStr(presetOptions.characterAscension.drops.mobDrops)"></span>)
+                </div>
             </button>
         </div>
 
         <h3>Talents</h3>
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(0, 38, 21, 3, 0)">
+            <button class="preset-button" @click="loadPreset(null, 38, 21, 3, null)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/talent-book-4.png">
@@ -163,7 +189,7 @@
                 </div>
                 Talent books (1 talent)
             </button>
-            <button class="preset-button" @click="loadPreset(0, 0, 31, 22, 6)">
+            <button class="preset-button" @click="loadPreset(null, null, 31, 22, 6)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -173,7 +199,7 @@
                 </div>
                 Mob drops (1 talent)
             </button>
-            <button class="preset-button" @click="loadPreset(0, 76, 42, 6, 0)">
+            <button class="preset-button" @click="loadPreset(null, 76, 42, 6, null)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/talent-book-4.png">
@@ -183,7 +209,7 @@
                 </div>
                 Talent books (2 talents)
             </button>
-            <button class="preset-button" @click="loadPreset(0, 0, 62, 44, 12)">
+            <button class="preset-button" @click="loadPreset(null, null, 62, 44, 12)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -193,7 +219,7 @@
                 </div>
                 Mob drops (2 talents)
             </button>
-            <button class="preset-button" @click="loadPreset(0, 114, 63, 9, 0)">
+            <button class="preset-button" @click="loadPreset(null, 114, 63, 9, null)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/talent-book-4.png">
@@ -203,7 +229,7 @@
                 </div>
                 Talent books (3 talents)
             </button>
-            <button class="preset-button" @click="loadPreset(0, 0, 93, 66, 18)">
+            <button class="preset-button" @click="loadPreset(null, null, 93, 66, 18)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -217,7 +243,7 @@
 
         <h3>5★ weapon ascension</h3>
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(6, 14, 14, 5, 0)">
+            <button class="preset-button" @click="loadPreset(6, 14, 14, 5, null)">
                 <div class="images">
                     <img src="assets/images/weapon-domain-drop-5.png">
                     <img src="assets/images/weapon-domain-drop-4.png">
@@ -227,7 +253,7 @@
                 </div>
                 Weapon domain drops
             </button>
-            <button class="preset-button" @click="loadPreset(0, 41, 27, 23, 0)">
+            <button class="preset-button" @click="loadPreset(null, 41, 27, 23, null)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/elite-mob-drop-4.png">
@@ -237,7 +263,7 @@
                 </div>
                 Elite mob drops
             </button>
-            <button class="preset-button" @click="loadPreset(0, 0, 27, 23, 15)">
+            <button class="preset-button" @click="loadPreset(null, null, 27, 23, 15)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -251,7 +277,7 @@
 
         <h3>4★ weapon ascension</h3>
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(4, 9, 9, 3, 0)">
+            <button class="preset-button" @click="loadPreset(4, 9, 9, 3, null)">
                 <div class="images">
                     <img src="assets/images/weapon-domain-drop-5.png">
                     <img src="assets/images/weapon-domain-drop-4.png">
@@ -261,7 +287,7 @@
                 </div>
                 Weapon domain drops
             </button>
-            <button class="preset-button" @click="loadPreset(0, 27, 18, 15, 0)">
+            <button class="preset-button" @click="loadPreset(null, 27, 18, 15, null)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/elite-mob-drop-4.png">
@@ -271,7 +297,7 @@
                 </div>
                 Elite mob drops
             </button>
-            <button class="preset-button" @click="loadPreset(0, 0, 18, 15, 10)">
+            <button class="preset-button" @click="loadPreset(null, null, 18, 15, 10)">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
