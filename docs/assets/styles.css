@@ -92,7 +92,7 @@ button {
   outline: 0;
   display: inline-flex;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
   align-items: center;
   gap: 0.5rem;
   border: 1px solid transparent;
@@ -197,6 +197,12 @@ footer {
   margin: 0 auto;
   font-size: 10px;
   font-style: italic;
+}
+footer .icons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
 }
 footer .icons a {
   padding: 0 5px;
