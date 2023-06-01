@@ -159,22 +159,7 @@ document.addEventListener('alpine:init', () => {
                     }
                 })
                 this.updateCalculations()
-            },
-            loadPreset(five, four, three, two, one) {
-                this.isDisabled = {
-                    five: five === null,
-                    four: four === null,
-                    three: three === null,
-                    two: two === null,
-                    one: one === null,
-                }
-                this.need = { five, four, three, two, one }
-                KEYS.forEach(key => {
-                    if (this.isDisabled[key]) {
-                        this.have[key] = 0
-                    }
-                })
-                this.updateCalculations()
+                window.scrollTo({top: 0, behavior: 'smooth'})
             },
             reset(type) {
                 this[type] = {

@@ -112,5 +112,75 @@ const presets = {
             talentBooksX3: ['five', 'one'],
             mobDropsX3: ['five', 'four'],
         }
+    },
+    weaponAscension5: {
+        min: 0,
+        max: 6,
+        drops: {
+            weaponDomainDrops: [
+                { five: 0, four: 0, three: 0, two: 5, one: 0 },
+                { five: 0, four: 0, three: 5, two: 0, one: 0 },
+                { five: 0, four: 0, three: 9, two: 0, one: 0 },
+                { five: 0, four: 5, three: 0, two: 0, one: 0 },
+                { five: 0, four: 9, three: 0, two: 0, one: 0 },
+                { five: 6, four: 0, three: 0, two: 0, one: 0 },
+            ],
+            eliteMobDrops: [
+                { five: 0, four: 0, three: 0, two: 5, one: 0 },
+                { five: 0, four: 0, three: 0, two: 18, one: 0 },
+                { five: 0, four: 0, three: 9, two: 0, one: 0 },
+                { five: 0, four: 0, three: 18, two: 0, one: 0 },
+                { five: 0, four: 14, three: 0, two: 0, one: 0 },
+                { five: 0, four: 27, three: 0, two: 0, one: 0 },
+            ],
+            mobDrops: [
+                { five: 0, four: 0, three: 0, two: 0, one: 3 },
+                { five: 0, four: 0, three: 0, two: 0, one: 12 },
+                { five: 0, four: 0, three: 0, two: 9, one: 0 },
+                { five: 0, four: 0, three: 0, two: 14, one: 0 },
+                { five: 0, four: 0, three: 9, two: 0, one: 0 },
+                { five: 0, four: 0, three: 18, two: 0, one: 0 },
+            ],
+        },
+        disabledKeys: {
+            weaponDomainDrops: ['one'],
+            eliteMobDrops: ['five', 'one'],
+            mobDrops: ['five', 'four'],
+        }
+    },
+    weaponAscension4: {
+        min: 0,
+        max: 6,
+        drops: {
+            weaponDomainDrops: [
+                { five: 0, four: 0, three: 0, two: 3, one: 0 },
+                { five: 0, four: 0, three: 3, two: 0, one: 0 },
+                { five: 0, four: 0, three: 6, two: 0, one: 0 },
+                { five: 0, four: 3, three: 0, two: 0, one: 0 },
+                { five: 0, four: 6, three: 0, two: 0, one: 0 },
+                { five: 4, four: 0, three: 0, two: 0, one: 0 },
+            ],
+            eliteMobDrops: [
+                { five: 0, four: 0, three: 0, two: 3, one: 0 },
+                { five: 0, four: 0, three: 0, two: 12, one: 0 },
+                { five: 0, four: 0, three: 6, two: 0, one: 0 },
+                { five: 0, four: 0, three: 12, two: 0, one: 0 },
+                { five: 0, four: 9, three: 0, two: 0, one: 0 },
+                { five: 0, four: 18, three: 0, two: 0, one: 0 },
+            ],
+            mobDrops: [
+                { five: 0, four: 0, three: 0, two: 0, one: 2 },
+                { five: 0, four: 0, three: 0, two: 0, one: 8 },
+                { five: 0, four: 0, three: 0, two: 6, one: 0 },
+                { five: 0, four: 0, three: 0, two: 9, one: 0 },
+                { five: 0, four: 0, three: 6, two: 0, one: 0 },
+                { five: 0, four: 0, three: 12, two: 0, one: 0 },
+            ],
+        },
+        disabledKeys: {
+            weaponDomainDrops: ['one'],
+            eliteMobDrops: ['five', 'one'],
+            mobDrops: ['five', 'four'],
+        }
     }
 }

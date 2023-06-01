@@ -125,10 +125,11 @@
 
         <div class="explanation">
             <p>
-                Use the sliders to select From and To, then click one of the buttons to apply the preset.
+                Use the sliders to select From and To, then click one of the buttons to apply the preset. Applying a
+                preset will overwrite any existing value in the Need column.
             </p>
             <p>
-                If a preset is selected, the simplified value (next to the progress bar) will be calculated based
+                If a preset is selected, the simplified value (under the progress bar) will be calculated based
                 only on the available rarities of your selected preset (with the lowest rarity taking a value of 1,
                 then 3, then 9, etc.). Also, input boxes for rarities that are impossible to obtain for the selected
                 preset will be disabled.
@@ -273,8 +274,27 @@
         </div>
 
         <h4>5★ weapon ascension</h4>
+
+        <div class="range-group" :class="{ 'error': presetOptions.weaponAscension5.error }">
+            <input type="range" :min="presets.weaponAscension5.min" :max="presets.weaponAscension5.max"
+                @change="updatePreset('weaponAscension5')" x-model="presetOptions.weaponAscension5.from">
+            <div>
+                <span x-text="presetOptions.weaponAscension5.from"></span> ✦
+                to
+                <span x-text="presetOptions.weaponAscension5.to"></span> ✦
+                <template x-if="presetOptions.weaponAscension5.error">
+                    <span style="color: red;">
+                        <br />
+                        Invalid selection
+                    </span>
+                </template>
+            </div>
+            <input type="range" :min="presets.weaponAscension5.min" :max="presets.weaponAscension5.max"
+                @change="updatePreset('weaponAscension5')" x-model="presetOptions.weaponAscension5.to">
+        </div>
+
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(6, 14, 14, 5, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('weaponAscension5', 'weaponDomainDrops')">
                 <div class="images">
                     <img src="assets/images/weapon-domain-drop-5.png">
                     <img src="assets/images/weapon-domain-drop-4.png">
@@ -283,8 +303,10 @@
                     <img src="assets/images/none.png">
                 </div>
                 Weapon domain drops
+                <div class="preview" x-text="craftableToStr(presetOptions.weaponAscension5.drops.weaponDomainDrops)">
+                </div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, 41, 27, 23, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('weaponAscension5', 'eliteMobDrops')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/elite-mob-drop-4.png">
@@ -293,8 +315,9 @@
                     <img src="assets/images/none.png">
                 </div>
                 Elite mob drops
+                <div class="preview" x-text="craftableToStr(presetOptions.weaponAscension5.drops.eliteMobDrops)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, null, 27, 23, 15)">
+            <button class="preset-button" @click="loadPresetFromSelection('weaponAscension5', 'mobDrops')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -303,12 +326,32 @@
                     <img src="assets/images/mob-drop-1.png">
                 </div>
                 Mob drops
+                <div class="preview" x-text="craftableToStr(presetOptions.weaponAscension5.drops.mobDrops)"></div>
             </button>
         </div>
 
         <h4>4★ weapon ascension</h4>
+
+        <div class="range-group" :class="{ 'error': presetOptions.weaponAscension4.error }">
+            <input type="range" :min="presets.weaponAscension4.min" :max="presets.weaponAscension4.max"
+                @change="updatePreset('weaponAscension4')" x-model="presetOptions.weaponAscension4.from">
+            <div>
+                <span x-text="presetOptions.weaponAscension4.from"></span> ✦
+                to
+                <span x-text="presetOptions.weaponAscension4.to"></span> ✦
+                <template x-if="presetOptions.weaponAscension4.error">
+                    <span style="color: red;">
+                        <br />
+                        Invalid selection
+                    </span>
+                </template>
+            </div>
+            <input type="range" :min="presets.weaponAscension4.min" :max="presets.weaponAscension4.max"
+                @change="updatePreset('weaponAscension4')" x-model="presetOptions.weaponAscension4.to">
+        </div>
+
         <div class="button-group">
-            <button class="preset-button" @click="loadPreset(4, 9, 9, 3, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('weaponAscension4', 'weaponDomainDrops')">
                 <div class="images">
                     <img src="assets/images/weapon-domain-drop-5.png">
                     <img src="assets/images/weapon-domain-drop-4.png">
@@ -317,8 +360,10 @@
                     <img src="assets/images/none.png">
                 </div>
                 Weapon domain drops
+                <div class="preview" x-text="craftableToStr(presetOptions.weaponAscension4.drops.weaponDomainDrops)">
+                </div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, 27, 18, 15, null)">
+            <button class="preset-button" @click="loadPresetFromSelection('weaponAscension4', 'eliteMobDrops')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/elite-mob-drop-4.png">
@@ -327,8 +372,9 @@
                     <img src="assets/images/none.png">
                 </div>
                 Elite mob drops
+                <div class="preview" x-text="craftableToStr(presetOptions.weaponAscension4.drops.eliteMobDrops)"></div>
             </button>
-            <button class="preset-button" @click="loadPreset(null, null, 18, 15, 10)">
+            <button class="preset-button" @click="loadPresetFromSelection('weaponAscension4', 'mobDrops')">
                 <div class="images">
                     <img src="assets/images/none.png">
                     <img src="assets/images/none.png">
@@ -337,6 +383,7 @@
                     <img src="assets/images/mob-drop-1.png">
                 </div>
                 Mob drops
+                <div class="preview" x-text="craftableToStr(presetOptions.weaponAscension4.drops.mobDrops)"></div>
             </button>
         </div>
     </section>
