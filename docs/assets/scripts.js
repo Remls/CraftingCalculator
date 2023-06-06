@@ -64,9 +64,13 @@ document.addEventListener('alpine:init', () => {
                 this.updateCalculations()
                 for (let type in this.presets) {
                     this.presetOptions[type] = {
-                        from: this.presets[type].min,
-                        to: this.presets[type].max,
-                        error: false,
+                        sliderGroups: [
+                            {
+                                from: this.presets[type].min,
+                                to: this.presets[type].max,
+                                error: false,
+                            }
+                        ],
                         drops: createEmptyPresets(type),
                     }
                     this.updatePreset(type)
@@ -120,12 +124,12 @@ document.addEventListener('alpine:init', () => {
                     $e.target.value = ''
                 }
             },
-            updatePreset(type) {
-                const from = parseInt(this.presetOptions[type].from)
-                const to = parseInt(this.presetOptions[type].to)
-                this.presetOptions[type].error = false
+            updatePreset(type, index = 0) {
+                const from = parseInt(this.presetOptions[type].sliderGroups[index].from)
+                const to = parseInt(this.presetOptions[type].sliderGroups[index].to)
+                this.presetOptions[type].sliderGroups[index].error = false
                 if (from > to) {
-                    this.presetOptions[type].error = true
+                    this.presetOptions[type].sliderGroups[index].error = true
                     return
                 }
                 for (let drop in this.presets[type].drops) {

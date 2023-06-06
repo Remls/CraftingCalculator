@@ -141,14 +141,14 @@
 
         <h4>Character ascension</h4>
 
-        <div class="range-group" :class="{ 'error': presetOptions.characterAscension.error }">
+        <div class="range-group" :class="{ 'error': presetOptions.characterAscension.sliderGroups[0].error }">
             <input type="range" :min="presets.characterAscension.min" :max="presets.characterAscension.max"
-                @change="updatePreset('characterAscension')" x-model="presetOptions.characterAscension.from">
+                @change="updatePreset('characterAscension')" x-model="presetOptions.characterAscension.sliderGroups[0].from">
             <div>
-                <span x-text="presetOptions.characterAscension.from"></span> ✦
+                <span x-text="presetOptions.characterAscension.sliderGroups[0].from"></span> ✦
                 to
-                <span x-text="presetOptions.characterAscension.to"></span> ✦
-                <template x-if="presetOptions.characterAscension.error">
+                <span x-text="presetOptions.characterAscension.sliderGroups[0].to"></span> ✦
+                <template x-if="presetOptions.characterAscension.sliderGroups[0].error">
                     <span style="color: red;">
                         <br />
                         Invalid selection
@@ -156,7 +156,7 @@
                 </template>
             </div>
             <input type="range" :min="presets.characterAscension.min" :max="presets.characterAscension.max"
-                @change="updatePreset('characterAscension')" x-model="presetOptions.characterAscension.to">
+                @change="updatePreset('characterAscension')" x-model="presetOptions.characterAscension.sliderGroups[0].to">
         </div>
 
         <div class="button-group">
@@ -186,14 +186,14 @@
 
         <h4>Talents</h4>
 
-        <div class="range-group" :class="{ 'error': presetOptions.talents.error }">
+        <div class="range-group" :class="{ 'error': presetOptions.talents.sliderGroups[0].error }">
             <input type="range" :min="presets.talents.min" :max="presets.talents.max" @change="updatePreset('talents')"
-                x-model="presetOptions.talents.from">
+                x-model="presetOptions.talents.sliderGroups[0].from">
             <div>
-                Lv. <span x-text="presetOptions.talents.from"></span>
+                Lv. <span x-text="presetOptions.talents.sliderGroups[0].from"></span>
                 to
-                Lv. <span x-text="presetOptions.talents.to"></span>
-                <template x-if="presetOptions.talents.error">
+                Lv. <span x-text="presetOptions.talents.sliderGroups[0].to"></span>
+                <template x-if="presetOptions.talents.sliderGroups[0].error">
                     <span style="color: red;">
                         <br />
                         Invalid selection
@@ -201,7 +201,7 @@
                 </template>
             </div>
             <input type="range" :min="presets.talents.min" :max="presets.talents.max" @change="updatePreset('talents')"
-                x-model="presetOptions.talents.to">
+                x-model="presetOptions.talents.sliderGroups[0].to">
         </div>
 
         <div class="button-group">
@@ -275,14 +275,14 @@
 
         <h4>5★ weapon ascension</h4>
 
-        <div class="range-group" :class="{ 'error': presetOptions.weaponAscension5.error }">
+        <div class="range-group" :class="{ 'error': presetOptions.weaponAscension5.sliderGroups[0].error }">
             <input type="range" :min="presets.weaponAscension5.min" :max="presets.weaponAscension5.max"
-                @change="updatePreset('weaponAscension5')" x-model="presetOptions.weaponAscension5.from">
+                @change="updatePreset('weaponAscension5')" x-model="presetOptions.weaponAscension5.sliderGroups[0].from">
             <div>
-                <span x-text="presetOptions.weaponAscension5.from"></span> ✦
+                <span x-text="presetOptions.weaponAscension5.sliderGroups[0].from"></span> ✦
                 to
-                <span x-text="presetOptions.weaponAscension5.to"></span> ✦
-                <template x-if="presetOptions.weaponAscension5.error">
+                <span x-text="presetOptions.weaponAscension5.sliderGroups[0].to"></span> ✦
+                <template x-if="presetOptions.weaponAscension5.sliderGroups[0].error">
                     <span style="color: red;">
                         <br />
                         Invalid selection
@@ -290,7 +290,7 @@
                 </template>
             </div>
             <input type="range" :min="presets.weaponAscension5.min" :max="presets.weaponAscension5.max"
-                @change="updatePreset('weaponAscension5')" x-model="presetOptions.weaponAscension5.to">
+                @change="updatePreset('weaponAscension5')" x-model="presetOptions.weaponAscension5.sliderGroups[0].to">
         </div>
 
         <div class="button-group">
@@ -332,14 +332,14 @@
 
         <h4>4★ weapon ascension</h4>
 
-        <div class="range-group" :class="{ 'error': presetOptions.weaponAscension4.error }">
+        <div class="range-group" :class="{ 'error': presetOptions.weaponAscension4.sliderGroups[0].error }">
             <input type="range" :min="presets.weaponAscension4.min" :max="presets.weaponAscension4.max"
-                @change="updatePreset('weaponAscension4')" x-model="presetOptions.weaponAscension4.from">
+                @change="updatePreset('weaponAscension4')" x-model="presetOptions.weaponAscension4.sliderGroups[0].from">
             <div>
-                <span x-text="presetOptions.weaponAscension4.from"></span> ✦
+                <span x-text="presetOptions.weaponAscension4.sliderGroups[0].from"></span> ✦
                 to
-                <span x-text="presetOptions.weaponAscension4.to"></span> ✦
-                <template x-if="presetOptions.weaponAscension4.error">
+                <span x-text="presetOptions.weaponAscension4.sliderGroups[0].to"></span> ✦
+                <template x-if="presetOptions.weaponAscension4.sliderGroups[0].error">
                     <span style="color: red;">
                         <br />
                         Invalid selection
@@ -347,7 +347,7 @@
                 </template>
             </div>
             <input type="range" :min="presets.weaponAscension4.min" :max="presets.weaponAscension4.max"
-                @change="updatePreset('weaponAscension4')" x-model="presetOptions.weaponAscension4.to">
+                @change="updatePreset('weaponAscension4')" x-model="presetOptions.weaponAscension4.sliderGroups[0].to">
         </div>
 
         <div class="button-group">
