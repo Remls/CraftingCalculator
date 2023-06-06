@@ -4,4 +4,8 @@ Crafting calculator for Genshin Impact. Available at https://genshin-crafting-ca
 
 ### Development
 
-Serve with `npx serve`, then navigate to `http://localhost:3000/docs/`.
+Serve with `npm run dev`.
+
+### Build
+
+Build with `npm run build`.

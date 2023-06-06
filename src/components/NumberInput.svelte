@@ -1,0 +1,30 @@
+<script>
+  export let value = 0;
+  export let disabled = false;
+  const clearValueIfZero = () => {
+    if (value === 0) {
+      value = null;
+    }
+  };
+</script>
+
+<input
+  type="number"
+  bind:value
+  min="0"
+  placeholder="0"
+  {disabled}
+  on:focus={clearValueIfZero}
+  on:change
+/>
+
+<style>
+  input[type="number"] {
+    width: 3rem;
+  }
+
+  input[type="number"]:disabled {
+    color: var(--txt-secondary-color);
+    cursor: not-allowed;
+  }
+</style>

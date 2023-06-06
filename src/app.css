@@ -24,12 +24,6 @@
   --txt-color: #0d1117;
   --txt-alt-color: #c9d1d9;
   --txt-secondary-color: gray;
-  --range-color: #287ee1;
-  --progress-bar-color: #287ee1;
-  --full-progress-bar-color: green;
-  --reset-button-color: #c23a3a;
-  --preset-button-color: #dcf2b9;
-  --link-button-color: #cca9d3;
 }
 
 body {
@@ -60,35 +54,27 @@ th {
   border: 1px solid var(--txt-secondary-color);
 }
 
-input[type="number"] {
-  width: 3rem;
-}
-
-input[type="number"].zero {
-  color: var(--txt-secondary-color);
-}
-input[type="number"]:disabled {
-  color: var(--txt-secondary-color);
-  cursor: not-allowed;
-}
-
-progress {
-  accent-color: var(--progress-bar-color);
-}
-progress.full {
-  accent-color: var(--full-progress-bar-color);
-}
-
 .presets-section .explanation > p {
   text-align: justify;
 }
-.presets-section > h4::before {
+.presets-section h4::before {
   content: "\2022";
   margin-right: 0.5rem;
 }
-.presets-section > h4 {
+.presets-section h4 {
   margin-block-start: 3rem;
   margin-block-end: 0.25rem;
+}
+.presets-section .talents-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-block-start: 3rem;
+  margin-block-end: 0.5rem;
+}
+.presets-section .talents-heading h4 {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 button {
@@ -112,82 +98,10 @@ button:focus {
   outline-offset: 2px;
 }
 
-.range-group {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  margin: 0.5rem 0 0.25rem;
-}
-.range-group.error {
-  animation: blink 1s;
-  animation-iteration-count: 3;
-}
-@keyframes blink {
-  50% {
-    border-color: red;
-  }
-}
-.range-group > input[type="range"] {
-  width: 4rem;
-  flex-grow: 2;
-  accent-color: var(--range-color);
-}
-.range-group > div {
-  text-align: center;
-  flex-grow: 0.5;
-}
-
-.reset-button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.reset-button {
-  color: var(--txt-alt-color);
-  background-color: var(--reset-button-color);
-  border-color: var(--reset-button-color);
-}
-
 .button-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-.button-group.row {
-  flex-direction: row;
-}
-.button-group.row > button {
-  flex-grow: 1;
-}
-
-.preset-button {
-  color: var(--txt-color);
-  background-color: var(--preset-button-color);
-  border-color: var(--preset-button-color);
-}
-.preset-button > div.preview {
-  flex-grow: 1;
-  text-align: end;
-}
-.preset-button > div.images {
-  display: flex;
-}
-.preset-button > div.images > img {
-  width: 12px;
-  height: 12px;
-}
-
-.link-button {
-  color: var(--txt-color);
-  background-color: var(--link-button-color);
-  border-color: var(--link-button-color);
-}
-.link-button > div.images > img {
-  width: 20px;
-  height: 20px;
 }
 
 footer {
