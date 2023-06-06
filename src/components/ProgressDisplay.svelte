@@ -1,6 +1,16 @@
 <script>
-  import { have, need } from "../stores/base";
-  import { simplify } from "../helpers/functions";
+  import { have, need, isDisabled } from "../stores/base";
+
+  const simplify = (input) => {
+    let power = 0;
+    let sum = 0;
+    ["one", "two", "three", "four", "five"].forEach((key) => {
+      if ($isDisabled[key]) return;
+      sum += input[key] * Math.pow(3, power);
+      power++;
+    });
+    return sum;
+  };
 
   $: haveSimplified = simplify($have);
   $: needSimplified = simplify($need);

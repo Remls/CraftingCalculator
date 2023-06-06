@@ -7,7 +7,6 @@
   import PresetButton from "./components/PresetButton.svelte";
   import RangeGroupRemoveButton from "./components/RangeGroupRemoveButton.svelte";
   import RangeGroupAddButton from "./components/RangeGroupAddButton.svelte";
-  import { simplify } from "./helpers/functions";
   import { keys, presets } from "./helpers/constants";
 
   import { presetOptions } from "./stores/presetOptions";

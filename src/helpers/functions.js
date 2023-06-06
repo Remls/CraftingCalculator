@@ -2,17 +2,6 @@ import { presets, keys } from "./constants";
 import { isDisabled } from "../stores/base";
 import nonePng from "../assets/none.png";
 
-export const simplify = (input) => {
-  let power = 0;
-  let sum = 0;
-  ["one", "two", "three", "four", "five"].forEach((key) => {
-    if (isDisabled[key]) return;
-    sum += input[key] * Math.pow(3, power);
-    power++;
-  });
-  return sum;
-};
-
 export const createEmptyPresets = (type) => {
   const returnObj = {};
   for (let drop in presets[type].drops) {
