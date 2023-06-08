@@ -3,7 +3,7 @@ export { default as OtherCalculatorsSection } from './OtherCalculatorsSection.sv
 export { default as PresetButton } from './PresetButton.svelte';
 export { default as PresetExplanationModal } from './PresetExplanationModal.svelte';
 export { default as ProgressDisplay } from './ProgressDisplay.svelte';
+export { default as RangeGroup } from './RangeGroup.svelte';
 export { default as RangeGroupAddButton } from './RangeGroupAddButton.svelte';
 export { default as RangeGroupRemoveButton } from './RangeGroupRemoveButton.svelte';
-export { default as RangeSelectors } from './RangeSelectors.svelte';
 export { default as ResetButton } from './ResetButton.svelte';

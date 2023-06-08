@@ -3,7 +3,7 @@
     NumberInput,
     OtherCalculatorsSection,
     ProgressDisplay,
-    RangeSelectors,
+    RangeGroup,
     ResetButton,
     PresetButton,
     RangeGroupAddButton,
@@ -80,7 +80,7 @@
     <div class="heading">
       <h4>Character ascension</h4>
     </div>
-    <RangeSelectors type="characterAscension" />
+    <RangeGroup type="characterAscension" />
     <div class="button-group">
       {#each Object.keys(presets.characterAscension.drops) as drop}
         <PresetButton type="characterAscension" {drop} />
@@ -92,14 +92,14 @@
       <RangeGroupAddButton type="talents" />
     </div>
     {#each $presetOptions.talents.rangeGroups as group, index (group.id)}
-      <RangeSelectors type="talents" {index}>
+      <RangeGroup type="talents" {index}>
         <svelte:fragment let:from let:to>
           Lv. {from} to Lv. {to}
         </svelte:fragment>
         <div slot="after">
           <RangeGroupRemoveButton type="talents" {index} />
         </div>
-      </RangeSelectors>
+      </RangeGroup>
     {/each}
     <div class="button-group">
       {#each Object.keys(presets.talents.drops) as drop}
@@ -110,7 +110,7 @@
     <div class="heading">
       <h4>5★ weapon ascension</h4>
     </div>
-    <RangeSelectors type="weaponAscension5" />
+    <RangeGroup type="weaponAscension5" />
     <div class="button-group">
       {#each Object.keys(presets.weaponAscension5.drops) as drop}
         <PresetButton type="weaponAscension5" {drop} />
@@ -120,7 +120,7 @@
     <div class="heading">
       <h4>4★ weapon ascension</h4>
     </div>
-    <RangeSelectors type="weaponAscension4" />
+    <RangeGroup type="weaponAscension4" />
     <div class="button-group">
       {#each Object.keys(presets.weaponAscension4.drops) as drop}
         <PresetButton type="weaponAscension4" {drop} />
