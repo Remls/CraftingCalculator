@@ -40,6 +40,10 @@ table {
   margin: 0 auto;
 }
 
+table th {
+  width: 33.33%;
+}
+
 section {
   width: 100%;
   max-width: 600px;
