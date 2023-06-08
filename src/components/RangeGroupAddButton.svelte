@@ -7,6 +7,7 @@
   <button
     class="button"
     on:click={() => presetOptions.addRangeGroup(type)}
+    class:hide={$presetOptions[type].rangeGroups.length === 3}
   >
     +
   </button>
@@ -28,5 +29,8 @@
     display: grid;
     place-items: center;
     padding: 0 12px;
+  }
+  .button.hide {
+    display: none;
   }
 </style>
