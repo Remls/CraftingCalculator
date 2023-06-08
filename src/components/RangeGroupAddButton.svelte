@@ -1,4 +1,5 @@
 <script>
+  import { IconPlus } from "@tabler/icons-svelte";
   import { presetOptions } from "../stores/presetOptions";
   export let type;
 
@@ -11,7 +12,9 @@
 </script>
 
 <div class="button-container">
-  <button class="button" on:click={clickHandler} class:hide> + </button>
+  <button class="button" on:click={clickHandler} class:hide>
+    <IconPlus size={12} />
+  </button>
 </div>
 
 <style>

@@ -8,10 +8,18 @@
     PresetButton,
     RangeGroupAddButton,
     RangeGroupRemoveButton,
+    PresetExplanationModal,
   } from "./components";
+  import { IconHelpCircle } from '@tabler/icons-svelte';
   import { keys, presets } from "./helpers/constants";
   import { have, need, isDisabled } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
+
+  let showPresetExplanationModal = false;
+  const openModal = () => {
+    navigator.vibrate(50);
+    showPresetExplanationModal = true;
+  };
 </script>
 
 <main>
@@ -62,28 +70,16 @@
   </table>
 
   <section class="presets-section">
-    <h2>Presets</h2>
-
-    <div class="explanation">
-      <p>
-        Use the sliders to select From and To, then click one of the buttons to
-        apply the preset. Applying a preset will overwrite any existing value in
-        the Need column.
-      </p>
-      <p>
-        If a preset is selected, the simplified value (under the progress bar)
-        will be calculated based only on the available rarities of your selected
-        preset (with the lowest rarity taking a value of 1, then 3, then 9,
-        etc.). Also, input boxes for rarities that are impossible to obtain for
-        the selected preset will be disabled.
-      </p>
-      <p>
-        To clear the preset and re-enable all inputs, click the "Full Reset"
-        button.
-      </p>
+    <div class="heading">
+      <h2>Presets</h2>
+      <button class="icon" on:click={openModal}>
+        <IconHelpCircle size={24} />
+      </button>
     </div>
 
-    <h4>Character ascension</h4>
+    <div class="heading">
+      <h4>Character ascension</h4>
+    </div>
     <RangeSelectors type="characterAscension" />
     <div class="button-group">
       {#each Object.keys(presets.characterAscension.drops) as drop}
@@ -91,7 +87,7 @@
       {/each}
     </div>
 
-    <div class="talents-heading">
+    <div class="heading">
       <h4>Talents</h4>
       <RangeGroupAddButton type="talents" />
     </div>
@@ -111,7 +107,9 @@
       {/each}
     </div>
 
-    <h4>5★ weapon ascension</h4>
+    <div class="heading">
+      <h4>5★ weapon ascension</h4>
+    </div>
     <RangeSelectors type="weaponAscension5" />
     <div class="button-group">
       {#each Object.keys(presets.weaponAscension5.drops) as drop}
@@ -119,7 +117,9 @@
       {/each}
     </div>
 
-    <h4>4★ weapon ascension</h4>
+    <div class="heading">
+      <h4>4★ weapon ascension</h4>
+    </div>
     <RangeSelectors type="weaponAscension4" />
     <div class="button-group">
       {#each Object.keys(presets.weaponAscension4.drops) as drop}
@@ -127,6 +127,8 @@
       {/each}
     </div>
   </section>
+
+  <PresetExplanationModal bind:showModal={showPresetExplanationModal} />
 
   <OtherCalculatorsSection />
 </main>

@@ -58,27 +58,21 @@ th {
   border: 1px solid var(--txt-secondary-color);
 }
 
-.presets-section .explanation > p {
-  text-align: justify;
-}
-.presets-section h4::before {
-  content: "\2022";
-  margin-right: 0.5rem;
-}
-.presets-section h4 {
-  margin-block-start: 3rem;
-  margin-block-end: 0.25rem;
-}
-.presets-section .talents-heading {
+.presets-section .heading {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-block-start: 3rem;
+  margin-block-start: 2rem;
   margin-block-end: 0.5rem;
 }
-.presets-section .talents-heading h4 {
+.presets-section .heading h2,
+.presets-section .heading h4 {
   margin-block-start: 0;
   margin-block-end: 0;
+}
+.presets-section .heading h4::before {
+  content: "\2022";
+  margin-right: 0.5rem;
 }
 
 button {
@@ -95,8 +89,17 @@ button {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-button:hover,
-button:focus {
+button.icon {
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button:not(.icon):hover,
+button:not(.icon):focus {
   filter: brightness(0.9);
   outline: 1px solid black;
   outline-offset: 2px;
