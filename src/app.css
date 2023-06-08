@@ -130,6 +130,5 @@ footer .icons {
   flex-wrap: nowrap;
 }
 footer .icons a {
-  padding: 0 5px;
-  text-decoration: none;
+  color: var(--txt-secondary-color);
 }
