@@ -128,6 +128,7 @@ footer .icons {
   flex-direction: row;
   gap: 0.5rem;
   flex-wrap: nowrap;
+  padding-left: 1rem;
 }
 footer .icons a {
   color: var(--txt-secondary-color);
