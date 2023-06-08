@@ -42,11 +42,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
+    gap: 0.125rem;
+    padding: 0.5rem 0;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-    margin: 0.5rem 0 0.25rem;
   }
   .range-group.error {
     animation: blink 1s;

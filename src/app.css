@@ -61,7 +61,7 @@ th {
 .presets-section .heading {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin-block-start: 2rem;
   margin-block-end: 0.5rem;
 }

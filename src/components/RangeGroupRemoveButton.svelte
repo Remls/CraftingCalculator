@@ -1,5 +1,5 @@
 <script>
-  import { IconTrash } from "@tabler/icons-svelte";
+  import { IconTrashX } from "@tabler/icons-svelte";
   import { presetOptions } from "../stores/presetOptions";
   export let type;
   export let index;
@@ -13,8 +13,8 @@
 </script>
 
 <div class="button-container">
-  <button class="button" on:click={clickHandler} class:hide>
-    <IconTrash size={12} />
+  <button class="icon" on:click={clickHandler} class:hide>
+    <IconTrashX color="red" />
   </button>
 </div>
 
@@ -24,17 +24,7 @@
     justify-content: center;
     align-items: center;
   }
-  .button {
-    color: white;
-    background-color: #c23a3a;
-    border-color: #c23a3a;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    padding: 0 12px;
-  }
-  .button.hide {
+  button.hide {
     display: none;
   }
 </style>

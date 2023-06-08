@@ -73,7 +73,7 @@
     <div class="heading">
       <h2>Presets</h2>
       <button class="icon" on:click={openModal}>
-        <IconHelpCircle size={24} />
+        <IconHelpCircle />
       </button>
     </div>
 
