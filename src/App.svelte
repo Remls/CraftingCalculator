@@ -17,7 +17,7 @@
 
   let showPresetExplanationModal = false;
   const openModal = () => {
-    navigator.vibrate(50);
+    navigator.vibrate?.(50);
     showPresetExplanationModal = true;
   };
 </script>

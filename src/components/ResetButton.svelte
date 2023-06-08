@@ -35,13 +35,13 @@
 
   const clickHandler = () => {
     if (type === 'have') {
-      navigator.vibrate(50);
+      navigator.vibrate?.(50);
       resetHave();
     } else if (type === 'need') {
-      navigator.vibrate(50);
+      navigator.vibrate?.(50);
       resetNeed();
     } else {
-      navigator.vibrate([150, 50, 150]);
+      navigator.vibrate?.([150, 50, 150]);
       resetAll();
     }
   };

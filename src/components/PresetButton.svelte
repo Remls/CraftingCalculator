@@ -11,7 +11,7 @@
   export let drop;
 
   const clickHandler = () => {
-    navigator.vibrate(50);
+    navigator.vibrate?.(50);
     loadPresetFromSelection(type, drop);
   };
 

@@ -4,6 +4,11 @@
   let dialog; // HTMLDialogElement
 
   $: if (dialog && showModal) dialog.showModal();
+
+  const clickHandler = () => {
+    navigator.vibrate?.(50);
+    dialog.close();
+  };
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -32,7 +37,7 @@
   </div>
   <div class="actions">
     <!-- svelte-ignore a11y-autofocus -->
-    <button autofocus on:click={() => dialog.close()}>Close</button>
+    <button autofocus on:click={clickHandler}>Close</button>
   </div>
 </dialog>
 

@@ -7,7 +7,7 @@
   $: hide = $presetOptions[type].rangeGroups.length <= 1;
 
   const clickHandler = () => {
-    navigator.vibrate(50);
+    navigator.vibrate?.(50);
     presetOptions.removeRangeGroup(type, index);
   };
 </script>

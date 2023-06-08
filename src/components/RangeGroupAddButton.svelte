@@ -6,7 +6,7 @@
   $: hide = $presetOptions[type].rangeGroups.length >= 3;
 
   const clickHandler = () => {
-    navigator.vibrate(50);
+    navigator.vibrate?.(50);
     presetOptions.addRangeGroup(type);
   };
 </script>
