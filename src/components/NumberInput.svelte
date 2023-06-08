@@ -1,6 +1,7 @@
 <script>
   export let value = 0;
   export let disabled = false;
+  export let tabindex = 0;
   const clearValueIfZero = () => {
     if (value === 0) {
       value = null;
@@ -14,6 +15,7 @@
   min="0"
   placeholder="0"
   {disabled}
+  {tabindex}
   on:focus={clearValueIfZero}
   on:change
 />

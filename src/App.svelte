@@ -74,19 +74,21 @@
       <th>Have</th>
       <th>Need</th>
     </tr>
-    {#each keys as key}
+    {#each keys as key, index}
       <tr>
         <th>{key.label}</th>
         <td>
           <NumberInput
             bind:value={$have[key.name]}
             disabled={$isDisabled[key.name]}
+            tabindex={index+10}
           />
         </td>
         <td>
           <NumberInput
             bind:value={$need[key.name]}
             disabled={$isDisabled[key.name]}
+            tabindex={index+20}
           />
         </td>
       </tr>
