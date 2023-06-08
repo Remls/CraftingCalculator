@@ -1,20 +1,17 @@
 <script>
-  import NumberInput from "./components/NumberInput.svelte";
-  import OtherCalculatorsSection from "./components/OtherCalculatorsSection.svelte";
-  import ProgressDisplay from "./components/ProgressDisplay.svelte";
-  import RangeSelectors from "./components/RangeSelectors.svelte";
-  import ResetButton from "./components/ResetButton.svelte";
-  import PresetButton from "./components/PresetButton.svelte";
-  import RangeGroupRemoveButton from "./components/RangeGroupRemoveButton.svelte";
-  import RangeGroupAddButton from "./components/RangeGroupAddButton.svelte";
+  import {
+    NumberInput,
+    OtherCalculatorsSection,
+    ProgressDisplay,
+    RangeSelectors,
+    ResetButton,
+    PresetButton,
+    RangeGroupAddButton,
+    RangeGroupRemoveButton,
+  } from "./components";
   import { keys, presets } from "./helpers/constants";
-
   import { have, need, isDisabled } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
-  // Initiate preset options' drops
-  for (let type in presets) {
-    presetOptions.updateDrops(type);
-  }
 </script>
 
 <main>

@@ -27,7 +27,7 @@ function getRandomId() {
 }
 
 function createPresetOptions() {
-  const opt = {};
+  let opt = {};
   for (let type in presets) {
     const from = presets[type].min;
     const to = presets[type].max;
@@ -41,6 +41,9 @@ function createPresetOptions() {
       ],
       drops: createEmptyPresets(type),
     };
+  }
+  for (let type in presets) {
+    opt = recomputeDrops(opt, type);
   }
 
   const { subscribe, set, update } = writable(opt);
