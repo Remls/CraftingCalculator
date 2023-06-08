@@ -1,5 +1,54 @@
+<script>
+  import { have, need, isDisabled } from "../stores/base";
+  export let type = "all";
+
+  const resetHave = () => {
+    have.set({
+      five: null,
+      four: null,
+      three: null,
+      two: null,
+      one: null,
+    });
+  };
+  const resetNeed = () => {
+    need.set({
+      five: null,
+      four: null,
+      three: null,
+      two: null,
+      one: null,
+    });
+  };
+  const resetAll = () => {
+    localStorage.clear();
+    resetHave();
+    resetNeed();
+    isDisabled.set({
+      five: false,
+      four: false,
+      three: false,
+      two: false,
+      one: false,
+    });
+  };
+
+  const clickHandler = () => {
+    if (type === 'have') {
+      navigator.vibrate(50);
+      resetHave();
+    } else if (type === 'need') {
+      navigator.vibrate(50);
+      resetNeed();
+    } else {
+      navigator.vibrate([150, 50, 150]);
+      resetAll();
+    }
+  };
+</script>
+
 <div class="button-container">
-  <button class="button" on:click>
+  <button class="button" on:click={clickHandler}>
     <slot />
   </button>
 </div>

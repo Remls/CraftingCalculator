@@ -2,16 +2,17 @@
   import { presetOptions } from "../stores/presetOptions";
   export let type;
   export let index;
+
+  $: hide = $presetOptions[type].rangeGroups.length <= 1;
+
+  const clickHandler = () => {
+    navigator.vibrate(50);
+    presetOptions.removeRangeGroup(type, index);
+  };
 </script>
 
 <div class="button-container">
-  <button
-    class="button"
-    on:click={() => presetOptions.removeRangeGroup(type, index)}
-    class:hide={$presetOptions[type].rangeGroups.length === 1}
-  >
-    -
-  </button>
+  <button class="button" on:click={clickHandler} class:hide> - </button>
 </div>
 
 <style>

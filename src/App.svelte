@@ -9,62 +9,12 @@
   import RangeGroupAddButton from "./components/RangeGroupAddButton.svelte";
   import { keys, presets } from "./helpers/constants";
 
+  import { have, need, isDisabled } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
   // Initiate preset options' drops
   for (let type in presets) {
     presetOptions.updateDrops(type);
   }
-
-  import { have, need, isDisabled } from "./stores/base";
-
-  const loadPresetFromSelection = (type, drop) => {
-    const selection = $presetOptions[type].drops[drop];
-    isDisabled.set({
-      five: selection.five === null,
-      four: selection.four === null,
-      three: selection.three === null,
-      two: selection.two === null,
-      one: selection.one === null,
-    });
-    need.set({ ...selection });
-    ["five", "four", "three", "two", "one"].forEach((key) => {
-      if ($isDisabled[key]) {
-        $have[key] = 0;
-      }
-    });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const resetHave = () => {
-    have.set({
-      five: null,
-      four: null,
-      three: null,
-      two: null,
-      one: null,
-    });
-  };
-  const resetNeed = () => {
-    need.set({
-      five: null,
-      four: null,
-      three: null,
-      two: null,
-      one: null,
-    });
-  };
-  const resetAll = () => {
-    localStorage.clear();
-    resetHave();
-    resetNeed();
-    isDisabled.set({
-      five: false,
-      four: false,
-      three: false,
-      two: false,
-      one: false,
-    });
-  };
 </script>
 
 <main>
@@ -81,14 +31,14 @@
           <NumberInput
             bind:value={$have[key.name]}
             disabled={$isDisabled[key.name]}
-            tabindex={index+10}
+            tabindex={index + 10}
           />
         </td>
         <td>
           <NumberInput
             bind:value={$need[key.name]}
             disabled={$isDisabled[key.name]}
-            tabindex={index+20}
+            tabindex={index + 20}
           />
         </td>
       </tr>
@@ -96,13 +46,13 @@
 
     <tr>
       <td>
-        <ResetButton on:click={resetAll}>Full Reset</ResetButton>
+        <ResetButton>Full Reset</ResetButton>
       </td>
       <td>
-        <ResetButton on:click={resetHave}>Reset</ResetButton>
+        <ResetButton type="have">Reset</ResetButton>
       </td>
       <td>
-        <ResetButton on:click={resetNeed}>Reset</ResetButton>
+        <ResetButton type="need">Reset</ResetButton>
       </td>
     </tr>
 
@@ -140,11 +90,7 @@
     <RangeSelectors type="characterAscension" />
     <div class="button-group">
       {#each Object.keys(presets.characterAscension.drops) as drop}
-        <PresetButton
-          type="characterAscension"
-          {drop}
-          on:click={() => loadPresetFromSelection("characterAscension", drop)}
-        />
+        <PresetButton type="characterAscension" {drop} />
       {/each}
     </div>
 
@@ -164,11 +110,7 @@
     {/each}
     <div class="button-group">
       {#each Object.keys(presets.talents.drops) as drop}
-        <PresetButton
-          type="talents"
-          {drop}
-          on:click={() => loadPresetFromSelection("talents", drop)}
-        />
+        <PresetButton type="talents" {drop} />
       {/each}
     </div>
 
@@ -176,11 +118,7 @@
     <RangeSelectors type="weaponAscension5" />
     <div class="button-group">
       {#each Object.keys(presets.weaponAscension5.drops) as drop}
-        <PresetButton
-          type="weaponAscension5"
-          {drop}
-          on:click={() => loadPresetFromSelection("weaponAscension5", drop)}
-        />
+        <PresetButton type="weaponAscension5" {drop} />
       {/each}
     </div>
 
@@ -188,11 +126,7 @@
     <RangeSelectors type="weaponAscension4" />
     <div class="button-group">
       {#each Object.keys(presets.weaponAscension4.drops) as drop}
-        <PresetButton
-          type="weaponAscension4"
-          {drop}
-          on:click={() => loadPresetFromSelection("weaponAscension4", drop)}
-        />
+        <PresetButton type="weaponAscension4" {drop} />
       {/each}
     </div>
   </section>
