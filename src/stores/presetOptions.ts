@@ -1,7 +1,12 @@
 import { writable } from "svelte/store";
 import { presets } from "../helpers/constants";
 import { createEmptyPresets } from "../helpers/functions";
-import { type Craftable, type DropType, type PresetType, type PresetOptions } from "../types";
+import {
+  type Craftable,
+  type DropType,
+  type PresetType,
+  type PresetOptions,
+} from "../types";
 
 function recomputeDrops(opt: PresetOptions, type: PresetType) {
   for (let drop in presets[type].drops) {
@@ -73,18 +78,13 @@ function createPresetOptions() {
         return opt;
       });
     },
-    updateDrops: (
-      type: PresetType,
-      index = 0,
-      from: number = null,
-      to: number = null
-    ) => {
+    updateDrops: (type: PresetType, index = 0, from?: number, to?: number) => {
       update((opt) => {
         // Update from and to for that specific rangeGroup, if provided
-        if (from !== null) {
+        if (typeof from !== 'undefined') {
           opt[type].rangeGroups[index].from = from;
         }
-        if (to !== null) {
+        if (typeof to !== 'undefined') {
           opt[type].rangeGroups[index].to = to;
         }
 

@@ -1,4 +1,4 @@
-import { presets, keys } from "./constants";
+import { presets, keys, keyNames } from "./constants";
 import {
   type Craftable,
   type DropType,
@@ -13,8 +13,8 @@ export const createEmptyPresets = (type: PresetType) => {
   const returnObj: DropGroups = {};
   for (let drop in presets[type].drops) {
     drop = drop as DropType;
-    const dropObj: Craftable = {};
-    ["five", "four", "three", "two", "one"].forEach((key) => {
+    const dropObj: Partial<Craftable> = {};
+    keyNames.forEach((key) => {
       dropObj[key] = 0;
     });
     presets[type].disabledKeys[drop].forEach((key: Rarity) => {

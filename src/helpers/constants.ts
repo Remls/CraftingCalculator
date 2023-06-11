@@ -8,6 +8,10 @@ export const keys: RarityKey[] = [
   { id: 1, name: "one", label: "★" },
 ];
 
+export const keyNames = keys.map((key) => key.name);
+
+export const keyNamesReversed = [...keyNames].reverse();
+
 export const presets: PresetData = {
   characterAscension: {
     min: 0,

@@ -19,21 +19,9 @@ type Calculator = {
   image: string;
 };
 
-type Craftable = {
-  five?: number | null;
-  four?: number | null;
-  three?: number | null;
-  two?: number | null;
-  one?: number | null;
-};
+type Craftable = Record<Rarity, number | null>;
 
-type CraftableDisabled = {
-  five: boolean;
-  four: boolean;
-  three: boolean;
-  two: boolean;
-  one: boolean;
-}
+type CraftableDisabled = Record<Rarity, boolean>;
 
 type RarityKey = {
   id: number;
@@ -44,7 +32,7 @@ type RarityKey = {
 type PresetData = Record<PresetType, {
   min: number;
   max: number;
-  drops: PartialRecord<DropType, Partial<Craftable[]>>;
+  drops: PartialRecord<DropType, Partial<Craftable>[]>;
   disabledKeys: PartialRecord<DropType, Rarity[]>;
 }>;
 

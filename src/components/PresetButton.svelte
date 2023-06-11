@@ -7,6 +7,7 @@
   import { presetOptions } from "../stores/presetOptions";
   import { have, need, isDisabled } from "../stores/base";
   import { type PresetType, type DropType, type Craftable } from "../types";
+  import { keyNames } from "../helpers/constants";
 
   export let type: PresetType;
   export let drop: DropType;
@@ -26,7 +27,7 @@
       one: selection.one === null,
     });
     need.set({ ...selection });
-    ["five", "four", "three", "two", "one"].forEach((key) => {
+    keyNames.forEach((key) => {
       if ($isDisabled[key]) {
         $have[key] = 0;
       }
