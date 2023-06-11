@@ -1,10 +1,12 @@
 import { writable } from "svelte/store";
 import { presets } from "../helpers/constants";
 import { createEmptyPresets } from "../helpers/functions";
+import { type Craftable, type DropType, type PresetType, type PresetOptions } from "../types";
 
-function recomputeDrops(opt, type) {
+function recomputeDrops(opt: PresetOptions, type: PresetType) {
   for (let drop in presets[type].drops) {
-    const preset = { five: 0, four: 0, three: 0, two: 0, one: 0 };
+    drop = drop as DropType;
+    const preset: Craftable = { five: 0, four: 0, three: 0, two: 0, one: 0 };
     opt[type].rangeGroups.forEach((rangeGroup) => {
       for (let i = rangeGroup.from; i < rangeGroup.to; i++) {
         ["five", "four", "three", "two", "one"].forEach((key) => {
@@ -27,10 +29,11 @@ function getRandomId() {
 }
 
 function createPresetOptions() {
-  let opt = {};
+  let opt: PresetOptions = {};
   for (let type in presets) {
-    const from = presets[type].min;
-    const to = presets[type].max;
+    type = type as PresetType;
+    const from: number = presets[type].min;
+    const to: number = presets[type].max;
     opt[type] = {
       rangeGroups: [
         {
@@ -39,18 +42,18 @@ function createPresetOptions() {
           to,
         },
       ],
-      drops: createEmptyPresets(type),
+      drops: createEmptyPresets(type as PresetType),
     };
   }
   for (let type in presets) {
-    opt = recomputeDrops(opt, type);
+    opt = recomputeDrops(opt, type as PresetType);
   }
 
   const { subscribe, set, update } = writable(opt);
 
   return {
     subscribe,
-    addRangeGroup: (type) => {
+    addRangeGroup: (type: PresetType) => {
       update((opt) => {
         const from = presets[type].min;
         const to = presets[type].max;
@@ -63,14 +66,19 @@ function createPresetOptions() {
         return opt;
       });
     },
-    removeRangeGroup: (type, index) => {
+    removeRangeGroup: (type: PresetType, index: number) => {
       update((opt) => {
         opt[type].rangeGroups.splice(index, 1);
         opt = recomputeDrops(opt, type);
         return opt;
       });
     },
-    updateDrops: (type, index = 0, from = null, to = null) => {
+    updateDrops: (
+      type: PresetType,
+      index = 0,
+      from: number = null,
+      to: number = null
+    ) => {
       update((opt) => {
         // Update from and to for that specific rangeGroup, if provided
         if (from !== null) {

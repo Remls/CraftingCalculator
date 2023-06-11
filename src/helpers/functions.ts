@@ -1,15 +1,23 @@
 import { presets, keys } from "./constants";
-import { isDisabled } from "../stores/base";
+import {
+  type Craftable,
+  type DropType,
+  type PresetType,
+  type Rarity,
+  type PresetImage,
+  type DropGroups,
+} from "../types";
 import nonePng from "../assets/none.png";
 
-export const createEmptyPresets = (type) => {
-  const returnObj = {};
+export const createEmptyPresets = (type: PresetType) => {
+  const returnObj: DropGroups = {};
   for (let drop in presets[type].drops) {
-    const dropObj = {};
+    drop = drop as DropType;
+    const dropObj: Craftable = {};
     ["five", "four", "three", "two", "one"].forEach((key) => {
       dropObj[key] = 0;
     });
-    presets[type].disabledKeys[drop].forEach((key) => {
+    presets[type].disabledKeys[drop].forEach((key: Rarity) => {
       dropObj[key] = null;
     });
     returnObj[drop] = dropObj;
@@ -17,27 +25,27 @@ export const createEmptyPresets = (type) => {
   return returnObj;
 };
 
-export const craftableToStr = (craftable) => {
-  let str = [];
+export const craftableToStr = (craftable: Craftable) => {
+  let returnStr: string[] = [];
   ["five", "four", "three", "two", "one"].forEach((key) => {
     if (craftable[key] !== null) {
-      str.push(craftable[key]);
+      returnStr.push(craftable[key]);
     } else {
-      str.push("-");
+      returnStr.push("-");
     }
   });
-  return str.join("/");
+  return returnStr.join("/");
 };
 
-export const camelCaseToSentenceCase = (str) => {
+export const camelCaseToSentenceCase = (str: string) => {
   let result = str.replace(/([A-Z])/g, " $1");
   result = result.toLowerCase();
   result = result.charAt(0).toUpperCase() + result.slice(1);
   return result;
-}
+};
 
-export const getPresetImages = (type, drop) => {
-  const images = [];
+export const getPresetImages = (type: PresetType, drop: DropType) => {
+  const images: PresetImage[] = [];
   keys.forEach((key) => {
     if (presets[type].disabledKeys[drop].includes(key.name)) {
       images.push({
@@ -46,7 +54,10 @@ export const getPresetImages = (type, drop) => {
       });
     } else {
       images.push({
-        src: new URL(`../assets/${drop}-${key.id}.png`, import.meta.url),
+        src: new URL(
+          `../assets/${drop}-${key.id}.png`,
+          import.meta.url
+        ) as unknown as string,
         alt: `${drop}, rarity level ${key.name}`,
       });
     }

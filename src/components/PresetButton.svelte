@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     getPresetImages,
     craftableToStr,
@@ -6,17 +6,18 @@
   } from "../helpers/functions";
   import { presetOptions } from "../stores/presetOptions";
   import { have, need, isDisabled } from "../stores/base";
+  import { type PresetType, type DropType, type Craftable } from "../types";
 
-  export let type;
-  export let drop;
+  export let type: PresetType;
+  export let drop: DropType;
 
   const clickHandler = () => {
     navigator.vibrate?.(50);
     loadPresetFromSelection(type, drop);
   };
 
-  const loadPresetFromSelection = (type, drop) => {
-    const selection = $presetOptions[type].drops[drop];
+  const loadPresetFromSelection = (type: PresetType, drop: DropType) => {
+    const selection: Craftable = $presetOptions[type].drops[drop];
     isDisabled.set({
       five: selection.five === null,
       four: selection.four === null,

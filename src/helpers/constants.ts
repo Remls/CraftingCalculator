@@ -1,4 +1,6 @@
-export const keys = [
+import { type PresetData, type RarityKey } from "../types";
+
+export const keys: RarityKey[] = [
   { id: 5, name: "five", label: "★★★★★" },
   { id: 4, name: "four", label: "★★★★" },
   { id: 3, name: "three", label: "★★★" },
@@ -6,7 +8,7 @@ export const keys = [
   { id: 1, name: "one", label: "★" },
 ];
 
-export const presets = {
+export const presets: PresetData = {
   characterAscension: {
     min: 0,
     max: 6,

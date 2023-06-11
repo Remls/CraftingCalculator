@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import { presets } from "../helpers/constants";
   import { presetOptions } from "../stores/presetOptions";
+  import { type PresetType } from "../types";
 
-  export let type;
+  export let type: PresetType;
   export let index = 0;
   let min = presets[type].min;
   let max = presets[type].max;

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     NumberInput,
     OtherCalculatorsSection,
@@ -10,15 +10,19 @@
     RangeGroupRemoveButton,
     PresetExplanationModal,
   } from "./components";
-  import { IconHelpCircle } from '@tabler/icons-svelte';
+  import { IconHelpCircle } from "@tabler/icons-svelte";
   import { keys, presets } from "./helpers/constants";
   import { have, need, isDisabled } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
+  import { type PresetType, type DropType } from "./types";
 
   let showPresetExplanationModal = false;
   const openModal = () => {
     navigator.vibrate?.(50);
     showPresetExplanationModal = true;
+  };
+  const getDrops = (type: PresetType) => {
+    return Object.keys(presets[type].drops) as DropType[];
   };
 </script>
 
@@ -82,7 +86,7 @@
     </div>
     <RangeGroup type="characterAscension" />
     <div class="button-group">
-      {#each Object.keys(presets.characterAscension.drops) as drop}
+      {#each getDrops("characterAscension") as drop}
         <PresetButton type="characterAscension" {drop} />
       {/each}
     </div>
@@ -102,7 +106,7 @@
       </RangeGroup>
     {/each}
     <div class="button-group">
-      {#each Object.keys(presets.talents.drops) as drop}
+      {#each getDrops("talents") as drop}
         <PresetButton type="talents" {drop} />
       {/each}
     </div>
@@ -112,7 +116,7 @@
     </div>
     <RangeGroup type="weaponAscension5" />
     <div class="button-group">
-      {#each Object.keys(presets.weaponAscension5.drops) as drop}
+      {#each getDrops("weaponAscension5") as drop}
         <PresetButton type="weaponAscension5" {drop} />
       {/each}
     </div>
@@ -122,7 +126,7 @@
     </div>
     <RangeGroup type="weaponAscension4" />
     <div class="button-group">
-      {#each Object.keys(presets.weaponAscension4.drops) as drop}
+      {#each getDrops("weaponAscension4") as drop}
         <PresetButton type="weaponAscension4" {drop} />
       {/each}
     </div>

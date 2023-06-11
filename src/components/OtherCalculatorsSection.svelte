@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import hoyolabImg from "../assets/hoyolab.png";
   import paimonImg from "../assets/paimon.png";
+  import { type Calculator } from "../types";
 
-  const calculators = [
+  const calculators: Calculator[] = [
     {
       name: "Hoyolab",
       url: "https://act.hoyolab.com/ys/event/calculator-sea/index.html",
@@ -14,7 +15,7 @@
       image: paimonImg,
     },
   ];
-  const goToCalculator = (calculator) => {
+  const goToCalculator = (calculator: Calculator) => {
     window.location.href = calculator.url;
   };
 </script>

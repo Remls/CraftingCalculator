@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
   import { tweened } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
   import { have, need, isDisabled } from "../stores/base";
+  import { type Craftable } from "../types";
 
-  const simplify = (input) => {
+  const simplify = (input: Craftable) => {
     let power = 0;
     let sum = 0;
     ["one", "two", "three", "four", "five"].forEach((key) => {

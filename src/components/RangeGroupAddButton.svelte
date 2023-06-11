@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
   import { IconCirclePlus } from "@tabler/icons-svelte";
   import { presetOptions } from "../stores/presetOptions";
-  export let type;
+  import { type PresetType } from "../types";
+  
+  export let type: PresetType;
 
   $: hide = $presetOptions[type].rangeGroups.length >= 3;
 

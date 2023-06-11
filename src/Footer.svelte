@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { IconBrandGithub, IconBrandTelegram } from "@tabler/icons-svelte";
 </script>
 

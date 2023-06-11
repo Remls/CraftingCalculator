@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   export let value = 0;
   export let disabled = false;
   export let tabindex = 0;

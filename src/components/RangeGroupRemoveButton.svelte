@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
   import { IconTrashX } from "@tabler/icons-svelte";
   import { presetOptions } from "../stores/presetOptions";
-  export let type;
-  export let index;
+  import type { PresetType } from "../types";
+
+  export let type: PresetType;
+  export let index: number;
 
   $: hide = $presetOptions[type].rangeGroups.length <= 1;
 

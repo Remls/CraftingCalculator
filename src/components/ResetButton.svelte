@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import { have, need, isDisabled } from "../stores/base";
-  export let type = "all";
+  export let type: "have" | "need" | "all" = "all";
 
   const resetHave = () => {
     have.set({
@@ -34,10 +34,10 @@
   };
 
   const clickHandler = () => {
-    if (type === 'have') {
+    if (type === "have") {
       navigator.vibrate?.(50);
       resetHave();
-    } else if (type === 'need') {
+    } else if (type === "need") {
       navigator.vibrate?.(50);
       resetNeed();
     } else {
