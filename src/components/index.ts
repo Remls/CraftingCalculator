@@ -8,3 +8,4 @@ export { default as RangeGroup } from "./RangeGroup.svelte";
 export { default as RangeGroupAddButton } from "./RangeGroupAddButton.svelte";
 export { default as RangeGroupRemoveButton } from "./RangeGroupRemoveButton.svelte";
 export { default as ResetButton } from "./ResetButton.svelte";
+export { default as SimplifiedValuesExplanationModal } from "./SimplifiedValuesExplanationModal.svelte";

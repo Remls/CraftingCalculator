@@ -15,11 +15,22 @@
   import { have, need, isDisabled } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
   import { type PresetType, type DropType } from "./types";
+  import SimplifiedValuesExplanationModal from "./components/SimplifiedValuesExplanationModal.svelte";
 
   let showPresetExplanationModal = false;
-  const openModal = () => {
-    navigator.vibrate?.(50);
-    showPresetExplanationModal = true;
+  let showSimplifiedValuesExplanationModal = false;
+  const openModal = (modalName: string) => {
+    return () => {
+      navigator.vibrate?.(50);
+      switch (modalName) {
+        case "preset":
+          showPresetExplanationModal = true;
+          break;
+        case "simplifiedValues":
+          showSimplifiedValuesExplanationModal = true;
+          break;
+      }
+    };
   };
   const getDrops = (type: PresetType) => {
     return Object.keys(presets[type].drops) as DropType[];
@@ -29,7 +40,7 @@
 <main>
   <table>
     <tr>
-      <th />
+      <th>Rarity</th>
       <th>Have</th>
       <th>Need</th>
     </tr>
@@ -66,9 +77,8 @@
     </tr>
 
     <tr>
-      <th>Progress</th>
-      <td colspan="2">
-        <ProgressDisplay />
+      <td colspan="3">
+        <ProgressDisplay on:help={openModal("simplifiedValues")} />
       </td>
     </tr>
   </table>
@@ -76,7 +86,7 @@
   <section class="presets-section">
     <div class="heading">
       <h2>Presets</h2>
-      <button class="icon" on:click={openModal}>
+      <button class="icon" on:click={openModal("preset")}>
         <IconHelpCircle />
       </button>
     </div>
@@ -133,6 +143,7 @@
   </section>
 
   <PresetExplanationModal bind:showModal={showPresetExplanationModal} />
+  <SimplifiedValuesExplanationModal bind:showModal={showSimplifiedValuesExplanationModal} />
 
   <OtherCalculatorsSection />
 </main>

@@ -4,7 +4,11 @@
   import { have, need, isDisabled } from "../stores/base";
   import { type Craftable, type Rarity } from "../types";
   import { keyNames, keyNamesReversed, keys } from "../helpers/constants";
+  import { IconHelpCircle } from "@tabler/icons-svelte";
+  import { createEventDispatcher } from "svelte";
 
+  const dispatch = createEventDispatcher();
+  
   $: highestNeed = (() => {
     for (let i = 0; i < keyNames.length; i++) {
       if ($isDisabled[keyNames[i]]) continue;
@@ -72,6 +76,11 @@
 </script>
 
 <div>
+  <strong>PROGRESS</strong>
+  <button class="icon help-button" on:click={() => dispatch('help')}>
+    <IconHelpCircle size={14} />
+  </button>
+  <br />
   <progress
     max="100"
     value={$progressValue}
@@ -87,6 +96,9 @@
 </div>
 
 <style>
+  .help-button {
+    display: inline-flex;
+  }
   progress {
     accent-color: #287ee1;
   }
