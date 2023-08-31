@@ -1,4 +1,5 @@
 <script lang="ts">
+  import logoPng from "./assets/logo.png";
   import {
     NumberInput,
     OtherCalculatorsSection,
@@ -39,7 +40,7 @@
 
 <main>
   <div class="main-heading">
-    <img src="public/favicon.png" alt="Logo" />
+    <img src={logoPng} alt="Logo" />
     <div>
       <h1>Crafting Calculator</h1>
       <p class="by-line">by Remls</p>
