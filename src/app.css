@@ -5,7 +5,7 @@
 }
 @media screen and (max-width: 1023px) {
   body {
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
   table {
     max-width: 100%;
@@ -30,6 +30,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg-color);
   color: var(--txt-color);
+}
+
+div.main-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-block-end: 1rem;
+}
+div.main-heading h1 {
+  margin-bottom: 0px;
+  text-align: center;
+}
+div.main-heading p.by-line {
+  margin-top: 0px;
+  font-size: 12px;
+  font-style: italic;
+  text-align: end;
 }
 
 table {

@@ -38,6 +38,13 @@
 </script>
 
 <main>
+  <div class="main-heading">
+    <img src="public/favicon.png" alt="Logo" />
+    <div>
+      <h1>Crafting Calculator</h1>
+      <p class="by-line">by Remls</p>
+    </div>
+  </div>
   <table>
     <tr>
       <th>Rarity</th>
@@ -66,7 +73,7 @@
 
     <tr>
       <td>
-        <ResetButton size={10}>Full Reset</ResetButton>
+        <ResetButton>Full Reset</ResetButton>
       </td>
       <td>
         <ResetButton type="have">Reset</ResetButton>
