@@ -66,7 +66,7 @@
 
     <tr>
       <td>
-        <ResetButton>Full Reset</ResetButton>
+        <ResetButton size={10}>Full Reset</ResetButton>
       </td>
       <td>
         <ResetButton type="have">Reset</ResetButton>

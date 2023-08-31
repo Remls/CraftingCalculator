@@ -1,6 +1,7 @@
 <script lang="ts">
   import { have, need, isDisabled } from "../stores/base";
   export let type: "have" | "need" | "all" = "all";
+  export let size: number = 12;
 
   const resetHave = () => {
     have.set({
@@ -48,7 +49,7 @@
 </script>
 
 <div class="button-container">
-  <button class="button" on:click={clickHandler}>
+  <button class="button" on:click={clickHandler} style="font-size: {size}px;">
     <slot />
   </button>
 </div>
@@ -63,5 +64,6 @@
     color: white;
     background-color: #c23a3a;
     border-color: #c23a3a;
+    height: 32px;
   }
 </style>
