@@ -37,14 +37,15 @@ div.main-heading {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-block-end: 1rem;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
 }
 div.main-heading h1 {
-  margin-bottom: 0px;
+  margin: 0px;
   text-align: center;
 }
 div.main-heading p.by-line {
-  margin-top: 0px;
+  margin: 0px;
   font-size: 12px;
   font-style: italic;
   text-align: end;
@@ -90,7 +91,7 @@ th {
 }
 .presets-section .heading h4::before {
   content: "\2022";
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 button {
@@ -146,7 +147,7 @@ footer .icons {
   flex-direction: row;
   gap: 0.5rem;
   flex-wrap: nowrap;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
 }
 footer .icons a {
   color: var(--txt-secondary-color);
