@@ -2,7 +2,7 @@
   import {
     getPresetImages,
     craftableToStr,
-    camelCaseToSentenceCase,
+    getDropNameForDisplay,
   } from "../helpers/functions";
   import { presetOptions } from "../stores/presetOptions";
   import { have, need, isDisabled } from "../stores/base";
@@ -42,7 +42,7 @@
       <img {src} {alt} />
     {/each}
   </div>
-  {camelCaseToSentenceCase(drop)}
+  {getDropNameForDisplay(drop)}
   <div class="preview">
     {craftableToStr($presetOptions[type].drops[drop])}
   </div>

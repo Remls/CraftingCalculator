@@ -37,7 +37,12 @@ export const craftableToStr = (craftable: Craftable) => {
   return returnStr.join("/");
 };
 
-export const camelCaseToSentenceCase = (str: string) => {
+export const getDropNameForDisplay = (str: string) => {
+  // Remove HSR prefix
+  if (str.startsWith("hsr")) {
+    str = str.slice(3);
+    str = str.charAt(0).toLowerCase() + str.slice(1);
+  }
   let result = str.replace(/([A-Z])/g, " $1");
   result = result.toLowerCase();
   result = result.charAt(0).toUpperCase() + result.slice(1);

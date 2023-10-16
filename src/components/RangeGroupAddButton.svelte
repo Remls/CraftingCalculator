@@ -4,8 +4,9 @@
   import { type PresetType } from "../types";
   
   export let type: PresetType;
+  export let maxRangeGroupLength = 3;
 
-  $: hide = $presetOptions[type].rangeGroups.length >= 3;
+  $: hide = $presetOptions[type].rangeGroups.length >= maxRangeGroupLength;
 
   const clickHandler = () => {
     navigator.vibrate?.(50);

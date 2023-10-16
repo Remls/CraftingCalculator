@@ -4,13 +4,23 @@ type PresetType =
   | "characterAscension"
   | "talents"
   | "weaponAscension5"
-  | "weaponAscension4";
+  | "weaponAscension4"
+  | "hsrCharacterAscension5"
+  | "hsrCharacterAscension4"
+  | "hsrBasicAtkTrace5"
+  | "hsrOtherTraces5"
+  | "hsrBasicAtkTrace4"
+  | "hsrOtherTraces4"
+  | "hsrLightConeAscension5"
+  | "hsrLightConeAscension4";
 type DropType =
   | "gemstones"
   | "mobDrops"
   | "talentBooks"
   | "weaponDomainDrops"
-  | "eliteMobDrops";
+  | "eliteMobDrops"
+  | "hsrMobDrops"
+  | "hsrCrimsonCalyxDrops";
 type Rarity = "five" | "four" | "three" | "two" | "one";
 
 type Calculator = {

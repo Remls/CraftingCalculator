@@ -99,55 +99,181 @@
       </button>
     </div>
 
-    <div class="heading">
-      <h4>Character ascension</h4>
-    </div>
-    <RangeGroup type="characterAscension" />
-    <div class="button-group">
-      {#each getDrops("characterAscension") as drop}
-        <PresetButton type="characterAscension" {drop} />
-      {/each}
-    </div>
+    <details open>
+      <summary class="game-title">
+        Genshin Impact
+      </summary>
 
-    <div class="heading">
-      <h4>Talents</h4>
-      <RangeGroupAddButton type="talents" />
-    </div>
-    {#each $presetOptions.talents.rangeGroups as group, index (group.id)}
-      <RangeGroup type="talents" {index}>
+      <div class="heading">
+        <h4>Character ascension</h4>
+      </div>
+      <RangeGroup type="characterAscension" />
+      <div class="button-group">
+        {#each getDrops("characterAscension") as drop}
+          <PresetButton type="characterAscension" {drop} />
+        {/each}
+      </div>
+  
+      <div class="heading">
+        <h4>Talents</h4>
+        <RangeGroupAddButton type="talents" />
+      </div>
+      {#each $presetOptions.talents.rangeGroups as group, index (group.id)}
+        <RangeGroup type="talents" {index}>
+          <svelte:fragment let:from let:to>
+            Lv. {from} to Lv. {to}
+          </svelte:fragment>
+          <div slot="after">
+            <RangeGroupRemoveButton type="talents" {index} />
+          </div>
+        </RangeGroup>
+      {/each}
+      <div class="button-group">
+        {#each getDrops("talents") as drop}
+          <PresetButton type="talents" {drop} />
+        {/each}
+      </div>
+  
+      <div class="heading">
+        <h4>5★ weapon ascension</h4>
+      </div>
+      <RangeGroup type="weaponAscension5" />
+      <div class="button-group">
+        {#each getDrops("weaponAscension5") as drop}
+          <PresetButton type="weaponAscension5" {drop} />
+        {/each}
+      </div>
+  
+      <div class="heading">
+        <h4>4★ weapon ascension</h4>
+      </div>
+      <RangeGroup type="weaponAscension4" />
+      <div class="button-group">
+        {#each getDrops("weaponAscension4") as drop}
+          <PresetButton type="weaponAscension4" {drop} />
+        {/each}
+      </div>
+    </details>
+  
+    <details>
+      <summary class="game-title">
+        Honkai: Star Rail
+      </summary>
+
+      <div class="heading">
+        <h4>5★ character ascension</h4>
+      </div>
+      <RangeGroup type="hsrCharacterAscension5" />
+      <div class="button-group">
+        {#each getDrops("hsrCharacterAscension5") as drop}
+          <PresetButton type="hsrCharacterAscension5" {drop} />
+        {/each}
+      </div>
+
+      <div class="heading">
+        <h4>4★ character ascension</h4>
+      </div>
+      <RangeGroup type="hsrCharacterAscension4" />
+      <div class="button-group">
+        {#each getDrops("hsrCharacterAscension4") as drop}
+          <PresetButton type="hsrCharacterAscension4" {drop} />
+        {/each}
+      </div>
+
+      <div class="heading">
+        <h4>5★ character traces</h4>
+      </div>
+      <div class="sub heading">
+        <h5>Basic ATK trace</h5>
+      </div>
+      <RangeGroup type="hsrBasicAtkTrace5">
         <svelte:fragment let:from let:to>
           Lv. {from} to Lv. {to}
         </svelte:fragment>
-        <div slot="after">
-          <RangeGroupRemoveButton type="talents" {index} />
-        </div>
       </RangeGroup>
-    {/each}
-    <div class="button-group">
-      {#each getDrops("talents") as drop}
-        <PresetButton type="talents" {drop} />
-      {/each}
-    </div>
+      <div class="button-group">
+        {#each getDrops("hsrBasicAtkTrace5") as drop}
+          <PresetButton type="hsrBasicAtkTrace5" {drop} />
+        {/each}
+      </div>
 
-    <div class="heading">
-      <h4>5★ weapon ascension</h4>
-    </div>
-    <RangeGroup type="weaponAscension5" />
-    <div class="button-group">
-      {#each getDrops("weaponAscension5") as drop}
-        <PresetButton type="weaponAscension5" {drop} />
+      <div class="sub heading">
+        <h5>Other traces</h5>
+        <RangeGroupAddButton type="hsrOtherTraces5" maxRangeGroupLength={4} />
+      </div>
+      {#each $presetOptions.hsrOtherTraces5.rangeGroups as group, index (group.id)}
+        <RangeGroup type="hsrOtherTraces5" {index}>
+          <svelte:fragment let:from let:to>
+            Lv. {from} to Lv. {to}
+          </svelte:fragment>
+          <div slot="after">
+            <RangeGroupRemoveButton type="hsrOtherTraces5" {index} />
+          </div>
+        </RangeGroup>
       {/each}
-    </div>
+      <div class="button-group">
+        {#each getDrops("hsrOtherTraces5") as drop}
+          <PresetButton type="hsrOtherTraces5" {drop} />
+        {/each}
+      </div>
 
-    <div class="heading">
-      <h4>4★ weapon ascension</h4>
-    </div>
-    <RangeGroup type="weaponAscension4" />
-    <div class="button-group">
-      {#each getDrops("weaponAscension4") as drop}
-        <PresetButton type="weaponAscension4" {drop} />
+      <div class="heading">
+        <h4>4★ character traces</h4>
+      </div>
+      <div class="sub heading">
+        <h5>Basic ATK trace</h5>
+      </div>
+      <RangeGroup type="hsrBasicAtkTrace4">
+        <svelte:fragment let:from let:to>
+          Lv. {from} to Lv. {to}
+        </svelte:fragment>
+      </RangeGroup>
+      <div class="button-group">
+        {#each getDrops("hsrBasicAtkTrace4") as drop}
+          <PresetButton type="hsrBasicAtkTrace4" {drop} />
+        {/each}
+      </div>
+
+      <div class="sub heading">
+        <h5>Other traces</h5>
+        <RangeGroupAddButton type="hsrOtherTraces4" maxRangeGroupLength={4} />
+      </div>
+      {#each $presetOptions.hsrOtherTraces4.rangeGroups as group, index (group.id)}
+        <RangeGroup type="hsrOtherTraces4" {index}>
+          <svelte:fragment let:from let:to>
+            Lv. {from} to Lv. {to}
+          </svelte:fragment>
+          <div slot="after">
+            <RangeGroupRemoveButton type="hsrOtherTraces4" {index} />
+          </div>
+        </RangeGroup>
       {/each}
-    </div>
+      <div class="button-group">
+        {#each getDrops("hsrOtherTraces4") as drop}
+          <PresetButton type="hsrOtherTraces4" {drop} />
+        {/each}
+      </div>
+
+      <div class="heading">
+        <h4>5★ light cone ascension</h4>
+      </div>
+      <RangeGroup type="hsrLightConeAscension5" />
+      <div class="button-group">
+        {#each getDrops("hsrLightConeAscension5") as drop}
+          <PresetButton type="hsrLightConeAscension5" {drop} />
+        {/each}
+      </div>
+
+      <div class="heading">
+        <h4>4★ light cone ascension</h4>
+      </div>
+      <RangeGroup type="hsrLightConeAscension4" />
+      <div class="button-group">
+        {#each getDrops("hsrLightConeAscension4") as drop}
+          <PresetButton type="hsrLightConeAscension4" {drop} />
+        {/each}
+      </div>
+    </details>
   </section>
 
   <PresetExplanationModal bind:showModal={showPresetExplanationModal} />

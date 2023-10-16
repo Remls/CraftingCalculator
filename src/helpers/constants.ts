@@ -143,4 +143,210 @@ export const presets: PresetData = {
       mobDrops: ["five", "four"],
     },
   },
+  hsrCharacterAscension5: {
+    min: 0,
+    max: 6,
+    drops: {
+      hsrMobDrops: [
+        { two: 5 },
+        { two: 10 },
+        { three: 6 },
+        { three: 9 },
+        { four: 6 },
+        { four: 9 },
+      ],
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+    },
+  },
+  hsrCharacterAscension4: {
+    min: 0,
+    max: 6,
+    drops: {
+      hsrMobDrops: [
+        { two: 4 },
+        { two: 8 },
+        { three: 5 },
+        { three: 8 },
+        { four: 5 },
+        { four: 7 },
+      ],
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+    },
+  },
+  hsrBasicAtkTrace5: {
+    min: 1,
+    max: 6,
+    drops: {
+      hsrMobDrops: [
+        {}, // skip 0
+        { two: 6 },
+        { three: 3 },
+        { three: 4 },
+        { four: 3 },
+        { four: 4 },
+      ],
+      hsrCrimsonCalyxDrops: [
+        {}, // skip 0
+        { two: 3 },
+        { three: 3 },
+        { three: 5 },
+        { four: 3 },
+        { four: 8 },
+      ]
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+      hsrCrimsonCalyxDrops: ["five", "one"],
+    },
+  },
+  hsrOtherTraces5: {
+    min: 1,
+    max: 10,
+    drops: {
+      hsrMobDrops: [
+        {}, // skip 0
+        { two: 3 },
+        { two: 6 },
+        { three: 3 },
+        { three: 4 },
+        { three: 6 },
+        { four: 3 },
+        { four: 4 },
+        {}, // mob drops not required
+        {}, // mob drops not required
+      ],
+      hsrCrimsonCalyxDrops: [
+        {}, // skip 0
+        {}, // crimson calyx drops not required
+        { two: 3 },
+        { three: 3 },
+        { three: 5 },
+        { three: 7 },
+        { four: 3 },
+        { four: 5 },
+        { four: 8 },
+        { four: 14 },
+      ]
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+      hsrCrimsonCalyxDrops: ["five", "one"]
+    },
+  },
+  hsrBasicAtkTrace4: {
+    min: 1,
+    max: 6,
+    drops: {
+      hsrMobDrops: [
+        {}, // skip 0
+        { two: 4 },
+        { two: 2 },
+        { two: 3 },
+        { two: 2 },
+        { four: 3 },
+      ],
+      hsrCrimsonCalyxDrops: [
+        {}, // skip 0
+        { two: 2 },
+        { three: 2 },
+        { three: 4 },
+        { four: 2 },
+        { four: 6 },
+      ]
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+      hsrCrimsonCalyxDrops: ["five", "one"],
+    },
+  },
+  hsrOtherTraces4: {
+    min: 1,
+    max: 10,
+    drops: {
+      hsrMobDrops: [
+        {}, // skip 0
+        { two: 2 },
+        { two: 4 },
+        { two: 2 },
+        { two: 3 },
+        { two: 5 },
+        { two: 2 },
+        { two: 3 },
+        {}, // mob drops not required
+        {}, // mob drops not required
+      ],
+      hsrCrimsonCalyxDrops: [
+        {}, // skip 0
+        {}, // crimson calyx drops not required
+        { two: 2 },
+        { three: 2 },
+        { three: 4 },
+        { three: 6 },
+        { four: 2 },
+        { four: 4 },
+        { four: 6 },
+        { four: 11 },
+      ]
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "four", "three", "one"],
+      hsrCrimsonCalyxDrops: ["five", "one"]
+    },
+  },
+  hsrLightConeAscension5: {
+    min: 0,
+    max: 6,
+    drops: {
+      hsrMobDrops: [
+        { two: 8 },
+        { two: 12 },
+        { three: 8 },
+        { three: 12 },
+        { four: 6 },
+        { four: 8 },
+      ],
+      hsrCrimsonCalyxDrops: [
+        {}, // crimson calyx drops not required
+        { two: 4 },
+        { three: 4 },
+        { three: 8 },
+        { four: 5 },
+        { four: 10 },
+      ]
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+      hsrCrimsonCalyxDrops: ["five", "one"],
+    },
+  },
+  hsrLightConeAscension4: {
+    min: 0,
+    max: 6,
+    drops: {
+      hsrMobDrops: [
+        { two: 5 },
+        { two: 10 },
+        { three: 6 },
+        { three: 9 },
+        { four: 5 },
+        { four: 7 },
+      ],
+      hsrCrimsonCalyxDrops: [
+        {}, // crimson calyx drops not required
+        { two: 3 },
+        { three: 3 },
+        { three: 6 },
+        { four: 4 },
+        { four: 8 },
+      ]
+    },
+    disabledKeys: {
+      hsrMobDrops: ["five", "one"],
+      hsrCrimsonCalyxDrops: ["five", "one"],
+    },
+  },
 };

@@ -22,7 +22,6 @@
   --bg-color: #f0f0f0;
   --secondary-color: #30363d;
   --txt-color: #0d1117;
-  --txt-alt-color: #c9d1d9;
   --txt-secondary-color: gray;
 }
 
@@ -70,6 +69,14 @@ section {
   padding: 1rem 0;
 }
 
+details summary.game-title {
+  font-size: 1.17em; /* h3 */
+  font-weight: bold;
+  cursor: pointer;
+  margin-block-start: 2rem;
+  margin-block-end: 0.5rem;
+}
+
 td,
 th {
   padding: 0.5rem;
@@ -84,14 +91,27 @@ th {
   margin-block-start: 2rem;
   margin-block-end: 0.5rem;
 }
+.presets-section .sub.heading {
+  margin-block-start: 1rem;
+  margin-block-end: 0.5rem;
+}
 .presets-section .heading h2,
-.presets-section .heading h4 {
+.presets-section .heading h4,
+.presets-section .heading h5 {
   margin-block-start: 0;
   margin-block-end: 0;
 }
 .presets-section .heading h4::before {
   content: "\2022";
   margin-inline-end: 0.5rem;
+}
+.presets-section .heading h5::before {
+  margin-inline-start: 1rem;
+  content: "-";
+  margin-inline-end: 0.5rem;
+}
+.presets-section .heading h5 {
+  color: var(--txt-secondary-color);
 }
 
 button {
