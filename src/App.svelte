@@ -1,7 +1,8 @@
-<script lang="ts">
+<script lang="ts"> 
   import logoPng from "./assets/logo.png";
   import {
     NumberInput,
+    GameSelectorSection,
     OtherCalculatorsSection,
     ProgressDisplay,
     RangeGroup,
@@ -17,9 +18,11 @@
   import { presetOptions } from "./stores/presetOptions";
   import { type PresetType, type DropType } from "./types";
   import SimplifiedValuesExplanationModal from "./components/SimplifiedValuesExplanationModal.svelte";
+  import { slide } from "svelte/transition";
 
   let showPresetExplanationModal = false;
   let showSimplifiedValuesExplanationModal = false;
+  let currentlySelectedGame = null;
   const openModal = (modalName: string) => {
     return () => {
       navigator.vibrate?.(50);
@@ -99,11 +102,10 @@
       </button>
     </div>
 
-    <details open>
-      <summary class="game-title">
-        Genshin Impact
-      </summary>
+    <GameSelectorSection bind:currentlySelectedGame />
 
+    {#if currentlySelectedGame === "Genshin Impact"}
+    <div transition:slide>
       <div class="heading">
         <h4>Character ascension</h4>
       </div>
@@ -153,13 +155,9 @@
           <PresetButton type="weaponAscension4" {drop} />
         {/each}
       </div>
-    </details>
-  
-    <details>
-      <summary class="game-title">
-        Honkai: Star Rail
-      </summary>
-
+    </div>
+    {:else if currentlySelectedGame === "Honkai: Star Rail"}
+    <div transition:slide>
       <div class="heading">
         <h4>5★ character ascension</h4>
       </div>
@@ -273,11 +271,12 @@
           <PresetButton type="hsrLightConeAscension4" {drop} />
         {/each}
       </div>
-    </details>
+    </div>
+    {/if}
   </section>
+
+  <OtherCalculatorsSection />
 
   <PresetExplanationModal bind:showModal={showPresetExplanationModal} />
   <SimplifiedValuesExplanationModal bind:showModal={showSimplifiedValuesExplanationModal} />
-
-  <OtherCalculatorsSection />
 </main>

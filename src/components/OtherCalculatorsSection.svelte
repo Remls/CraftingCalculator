@@ -40,7 +40,7 @@
     flex-direction: row;
   }
   button {
-    flex-grow: 1;
+    flex: 1 1 0; /* equal width */
     color: var(--txt-color);
     background-color: #cca9d3;
     border-color: #cca9d3;
