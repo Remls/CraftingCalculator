@@ -7,7 +7,7 @@ import {
   type PresetImage,
   type DropGroups,
 } from "../types";
-import nonePng from "../assets/none.png";
+import nonePng from "../assets/drops/none.png";
 
 export const createEmptyPresets = (type: PresetType) => {
   const returnObj: DropGroups = {};
@@ -60,7 +60,7 @@ export const getPresetImages = (type: PresetType, drop: DropType) => {
     } else {
       images.push({
         src: new URL(
-          `../assets/${drop}-${key.id}.png`,
+          `../assets/drops/${drop}-${key.id}.png`,
           import.meta.url
         ) as unknown as string,
         alt: `${drop}, rarity level ${key.name}`,
