@@ -1,49 +1,19 @@
 <script lang="ts">
   import { have, need, isDisabled } from "../stores/base";
+  import { fullReset } from "../helpers/functions";
   export let type: "have" | "need" | "all" = "all";
   export let size: number = 12;
-
-  const resetHave = () => {
-    have.set({
-      five: null,
-      four: null,
-      three: null,
-      two: null,
-      one: null,
-    });
-  };
-  const resetNeed = () => {
-    need.set({
-      five: null,
-      four: null,
-      three: null,
-      two: null,
-      one: null,
-    });
-  };
-  const resetAll = () => {
-    localStorage.clear();
-    resetHave();
-    resetNeed();
-    isDisabled.set({
-      five: false,
-      four: false,
-      three: false,
-      two: false,
-      one: false,
-    });
-  };
 
   const clickHandler = () => {
     if (type === "have") {
       navigator.vibrate?.(50);
-      resetHave();
+      have.reset();
     } else if (type === "need") {
       navigator.vibrate?.(50);
-      resetNeed();
+      need.reset();
     } else {
       navigator.vibrate?.([150, 50, 150]);
-      resetAll();
+      fullReset();
     }
   };
 </script>

@@ -1,5 +1,5 @@
 import { presets, keys, keyNames, keyNamesReversed } from "./constants";
-import { have, need } from "../stores/base";
+import { have, need, isDisabled } from "../stores/base";
 import {
   type Craftable,
   type DropType,
@@ -75,17 +75,23 @@ export const parseQueryParams = (key: string) => {
   const urlParams = new URLSearchParams(window.location.search);
   const craftable = key === "have" ? have : need;
   if (urlParams.has(key)) {
-    const haveParams = urlParams
+    const valueList = urlParams
       .get(key)
       .split(",")
       .filter((v) => v.match(/\d+/))
       .reverse();
-    if (haveParams) {
-      craftable.reset();
-      haveParams.forEach((value, index) => {
+    if (valueList) {
+      valueList.forEach((value, index) => {
         if (index >= keyNamesReversed.length) return;
         craftable.updateKey(keyNamesReversed[index], parseInt(value));
       });
     }
   }
 };
+
+export const fullReset = () => {
+  localStorage.clear();
+  need.reset();
+  have.reset();
+  isDisabled.reset();
+}

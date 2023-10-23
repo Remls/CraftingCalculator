@@ -14,17 +14,21 @@
   } from "./components";
   import { IconHelpCircle } from "@tabler/icons-svelte";
   import { keys, presets } from "./helpers/constants";
-  import { parseQueryParams } from "./helpers/functions";
+  import { fullReset, parseQueryParams } from "./helpers/functions";
   import { have, need, isDisabled } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
   import { type PresetType, type DropType } from "./types";
   import SimplifiedValuesExplanationModal from "./components/SimplifiedValuesExplanationModal.svelte";
   import { slide } from "svelte/transition";
 
-  parseQueryParams('have');
-  parseQueryParams('need');
-  // Remove query params from URL
-  history.replaceState(null, '', window.location.pathname);
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('have') || urlParams.has('need')) {
+    fullReset();
+    parseQueryParams('have');
+    parseQueryParams('need');
+    // Remove query params from URL
+    history.replaceState(null, '', window.location.pathname);
+  }
 
   let showPresetExplanationModal = false;
   let showSimplifiedValuesExplanationModal = false;
