@@ -1,4 +1,5 @@
-import { presets, keys, keyNames } from "./constants";
+import { presets, keys, keyNames, keyNamesReversed } from "./constants";
+import { have, need } from "../stores/base";
 import {
   type Craftable,
   type DropType,
@@ -68,4 +69,23 @@ export const getPresetImages = (type: PresetType, drop: DropType) => {
     }
   });
   return images;
+};
+
+export const parseQueryParams = (key: string) => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const craftable = key === "have" ? have : need;
+  if (urlParams.has(key)) {
+    const haveParams = urlParams
+      .get(key)
+      .split(",")
+      .filter((v) => v.match(/\d+/))
+      .reverse();
+    if (haveParams) {
+      craftable.reset();
+      haveParams.forEach((value, index) => {
+        if (index >= keyNamesReversed.length) return;
+        craftable.updateKey(keyNamesReversed[index], parseInt(value));
+      });
+    }
+  }
 };
