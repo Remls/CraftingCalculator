@@ -14,8 +14,8 @@
   } from "./components";
   import { IconHelpCircle } from "@tabler/icons-svelte";
   import { keys, presets } from "./helpers/constants";
-  import { fullReset, parseQueryParams } from "./helpers/functions";
-  import { have, need, isDisabled } from "./stores/base";
+  import { parseQueryParams } from "./helpers/functions";
+  import { have, need, isDisabled, resetAllSyncedStores } from "./stores/base";
   import { presetOptions } from "./stores/presetOptions";
   import { type PresetType, type DropType } from "./types";
   import SimplifiedValuesExplanationModal from "./components/SimplifiedValuesExplanationModal.svelte";
@@ -23,7 +23,7 @@
 
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has('have') || urlParams.has('need')) {
-    fullReset();
+    resetAllSyncedStores();
     parseQueryParams('have');
     parseQueryParams('need');
     // Remove query params from URL

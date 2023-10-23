@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { have, need, isDisabled } from "../stores/base";
-  import { fullReset } from "../helpers/functions";
+  import { have, need, resetAllSyncedStores } from "../stores/base";
   export let type: "have" | "need" | "all" = "all";
   export let size: number = 12;
 
@@ -13,7 +12,7 @@
       need.reset();
     } else {
       navigator.vibrate?.([150, 50, 150]);
-      fullReset();
+      resetAllSyncedStores();
     }
   };
 </script>

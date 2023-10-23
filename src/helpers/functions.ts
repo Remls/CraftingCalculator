@@ -88,10 +88,3 @@ export const parseQueryParams = (key: string) => {
     }
   }
 };
-
-export const fullReset = () => {
-  localStorage.clear();
-  need.reset();
-  have.reset();
-  isDisabled.reset();
-}

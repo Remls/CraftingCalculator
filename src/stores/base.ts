@@ -45,3 +45,9 @@ export const isDisabled = createSyncedStore<CraftableDisabled>("isDisabled", {
   two: false,
   one: false,
 });
+export const resetAllSyncedStores = () => {
+  localStorage.clear();
+  have.reset();
+  need.reset();
+  isDisabled.reset();
+}
