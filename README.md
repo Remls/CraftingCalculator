@@ -1,6 +1,6 @@
 # Crafting Calculator
 
-Crafting calculator for Genshin Impact. Available at https://genshin-crafting-calculator.netlify.app
+Crafting calculator for Genshin Impact and Honkai: Star Rail. Available at https://crafting-calculator.remls.io
 
 ### Development
 
